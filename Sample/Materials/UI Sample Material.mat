@@ -76,7 +76,7 @@ Material:
     - _PosZ: 1
     - _Precision: 10
     - _RotX: 23
-    - _RotY: 0
+    - _RotY: 13
     - _Rows: 4
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1

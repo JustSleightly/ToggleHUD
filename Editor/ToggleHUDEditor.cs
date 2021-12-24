@@ -74,7 +74,7 @@ public class ToggleHUDEditor : ShaderGUI
 
                 if (GUILayout.Button(buttonUIGridTexture, "label", GUILayout.Width(150), GUILayout.Height(150)))
                 {
-                    Application.OpenURL("https://github.com/JustSleightly/Resources/tree/main/ViewSpaceToggleUI");
+                    Application.OpenURL("https://github.com/JustSleightly/ToggleHUD/tree/main/Sample/Textures");
                 }
 
                 GUILayout.FlexibleSpace();
@@ -368,7 +368,7 @@ public class ToggleHUDEditor : ShaderGUI
         if (!TexturesInitialized)
         {
             if (!UIGridTexture)
-                UIGridTexture = DownloadTexture("https://raw.githubusercontent.com/JustSleightly/Resources/main/ViewSpaceToggleUI/UI%20Grid%20Numbered.png");
+                UIGridTexture = DownloadTexture("https://raw.githubusercontent.com/JustSleightly/ToggleHUD/main/Sample/Textures/UI%20Grid%20Numbered.png");
 
             if (!IconJSLogo)
                 IconJSLogo = DownloadTexture("https://github.com/JustSleightly/Resources/raw/main/Icons/JSLogo.png");
