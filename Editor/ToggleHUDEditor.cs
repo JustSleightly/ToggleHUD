@@ -2,6 +2,7 @@
 using UnityEngine;
 using UnityEditor;
 using UnityEngine.Networking;
+using Unity.Jobs;
 
 public class ToggleHUDEditor : ShaderGUI
 {
@@ -11,7 +12,29 @@ public class ToggleHUDEditor : ShaderGUI
     private static Texture2D IconDiscord;
     private static Texture2D IconGithub;
     private static Texture2D IconStore;
+    private static TextureDownloader UIGridTextureDownloader;
+    private static TextureDownloader IconJSLogoDownloader;
+    private static TextureDownloader IconDiscordDownloader;
+    private static TextureDownloader IconGithubDownloader;
+    private static TextureDownloader IconStoreDownloader;
     private static bool TexturesInitialized = false;
+
+    public ToggleHUDEditor(){
+        if(UIGridTextureDownloader == null)
+            UIGridTextureDownloader = new TextureDownloader("https://raw.githubusercontent.com/JustSleightly/ToggleHUD/main/Sample/Textures/UI%20Grid%20Numbered.png");
+
+        if(IconJSLogoDownloader == null)
+            IconJSLogoDownloader = new TextureDownloader("https://github.com/JustSleightly/Resources/raw/main/Icons/JSLogo.png");
+
+        if(IconDiscordDownloader == null)
+            IconDiscordDownloader = new TextureDownloader("https://github.com/JustSleightly/Resources/raw/main/Icons/Discord.png");
+
+        if(IconGithubDownloader == null)
+            IconGithubDownloader = new TextureDownloader("https://github.com/JustSleightly/Resources/raw/main/Icons/GitHub.png");
+
+        if(IconStoreDownloader == null)
+            IconStoreDownloader = new TextureDownloader("https://github.com/JustSleightly/Resources/raw/main/Icons/Store.png");
+    }
     
     public override void OnGUI(MaterialEditor materialEditor, MaterialProperty[] properties)
     {
@@ -332,58 +355,47 @@ public class ToggleHUDEditor : ShaderGUI
     #region DownloadSampleUIGrid
 
     //Method to download a texture via webrequest and store in memory
-    private static Texture2D DownloadTexture(string url)
+    private class TextureDownloader
     {
-        using (UnityWebRequest client = new UnityWebRequest(url))
+        public Texture2D texture;
+        private UnityWebRequest client;
+
+        public TextureDownloader(string url)
         {
+            client = new UnityWebRequest(url);
             client.downloadHandler = new DownloadHandlerBuffer();
             client.timeout = 10;
-            client.SendWebRequest();
-
-            bool stop = false;
-
-            while (!stop)
+            client.SendWebRequest().completed += (asyncOperation) =>
             {
                 if (client.isNetworkError || client.isHttpError)
                 {
-                    stop = true;
                     Debug.LogError(client.error);
                 }
 
-                if (client.isDone)
-                {
-                    Texture2D DownloadedIcon = new Texture2D(512, 512);
-                    DownloadedIcon.LoadImage(client.downloadHandler.data);
-                    return DownloadedIcon;
-                }
-            }
+                Texture2D DownloadedIcon = new Texture2D(512, 512);
+                DownloadedIcon.LoadImage(client.downloadHandler.data);
+                texture = DownloadedIcon;
+            };
         }
-
-        return null;
     }
 
     //Download Textures On Load
     private static void InitializeTextures()
     {
-        if (!TexturesInitialized)
-        {
-            if (!UIGridTexture)
-                UIGridTexture = DownloadTexture("https://raw.githubusercontent.com/JustSleightly/ToggleHUD/main/Sample/Textures/UI%20Grid%20Numbered.png");
+        if (!UIGridTexture)
+            UIGridTexture = UIGridTextureDownloader.texture;
 
-            if (!IconJSLogo)
-                IconJSLogo = DownloadTexture("https://github.com/JustSleightly/Resources/raw/main/Icons/JSLogo.png");
+        if (!IconJSLogo)
+            IconJSLogo = IconJSLogoDownloader.texture;
 
-            if (!IconDiscord)
-                IconDiscord = DownloadTexture("https://github.com/JustSleightly/Resources/raw/main/Icons/Discord.png");
+        if (!IconDiscord)
+            IconDiscord = IconDiscordDownloader.texture;
 
-            if (!IconGithub)
-                IconGithub = DownloadTexture("https://github.com/JustSleightly/Resources/raw/main/Icons/GitHub.png");
+        if (!IconGithub)
+            IconGithub = IconGithubDownloader.texture;
 
-            if (!IconStore)
-                IconStore = DownloadTexture("https://github.com/JustSleightly/Resources/raw/main/Icons/Store.png");
-
-            TexturesInitialized = true;
-        }
+        if (!IconStore)
+            IconStore = IconStoreDownloader.texture;
     }
 
     //Method to download and display credits
