@@ -24,6 +24,12 @@
 
 ######
 
+# Installation
+
+Navigate in your project files to *Assets/Shaders/Quantum/ToggleHUD/Samples/Prefabs* and drag in the ToggleHUD.prefab into the scene for Unity base scaling, then onto your desired avatar. Expand the ToggleHUD object to reveal the ProxyRoot.Head object, and move ProxyRoot.Head onto your avatar's Head bone. Reset the transform of ProxyRoot.Head by right-clicking the Transform module in the inspector, and clicking Reset.
+
+######
+
 # Usage
 
 ### Preparing the Texture
@@ -133,7 +139,6 @@ Toggle the display of each of the UI icons using the respective checkboxes
 Assuming you have a **commercial license** for ToggleHUD, the shader files can be found at *Assets/Shaders/Quantum/ToggleHUD*. The minimum files to export are the ToggleHUD.shader and the Editor folder, then whatever material and texture you used with it.
 
 </details>
-
 
 ---
 
