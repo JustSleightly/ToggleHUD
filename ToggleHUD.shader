@@ -10,6 +10,7 @@
         _Columns ("Columns", Int) = 4
         [Toggle(FLIP_HORIZONTAL)] _FlipHorizontal ("Flip Horizontal Order", Float) = 0.0
         [Toggle(FLIP_VERTICAL)] _FlipVertical ("Flip Vertical Order", Float) = 0.0
+        [Toggle(ORDER_VERTICAL)] _OrderVertical ("Vertical Icon Order", Float) = 0.0
         _Toggle_0 ("Toggle 0", Int) = 1
         _Toggle_1 ("Toggle 1", Int) = 1
         _Toggle_2 ("Toggle 2", Int) = 1
@@ -39,6 +40,7 @@
             CGPROGRAM
 			#pragma shader_feature_local FLIP_HORIZONTAL
 			#pragma shader_feature_local FLIP_VERTICAL
+            #pragma shader_feature_local ORDER_VERTICAL
             #pragma vertex vert
             #pragma fragment frag
 
@@ -108,14 +110,21 @@
                               | _Toggle_12<<12 | _Toggle_13<<13 | _Toggle_14<<14 | _Toggle_15<<15;
                 uint2 position = uint2(i.uv.x*_Columns, i.uv.y*_Rows);
                 #ifdef FLIP_HORIZONTAL
-                position.x = _Columns - 1 - position.x;
+                    position.x = _Columns - 1 - position.x;
                 #endif
                 #ifdef FLIP_VERTICAL
-                position.y = _Rows - 1 - position.y;
+                    position.y = _Rows - 1 - position.y;
                 #endif
+
                 uint index = position.x + position.y*_Columns;
                 float2 localSample = float2(frac(i.uv.x*_Columns), frac(i.uv.y*_Rows));
-                float2 samplePos = (float2(index%4, index/4)+localSample)/4.0;
+
+                #ifdef ORDER_VERTICAL
+                    float2 samplePos = (float2(index/4, index%4)+localSample)/4.0;
+                #else
+                    float2 samplePos = (float2(index%4, index/4)+localSample)/4.0;
+                #endif
+
                 if((composite & (1<<index)) == 0 || index >= 16) discard;
                 fixed4 col = tex2Dlod(_MainTex, float4(samplePos, 0.0, 0.0));
                 return col;
