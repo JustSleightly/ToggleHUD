@@ -116,14 +116,14 @@
                     position.y = _Rows - 1 - position.y;
                 #endif
 
-                uint index = position.x + position.y*_Columns;
-                float2 localSample = float2(frac(i.uv.x*_Columns), frac(i.uv.y*_Rows));
-
                 #ifdef ORDER_VERTICAL
-                    float2 samplePos = (float2(index/4, index%4)+localSample)/4.0;
+                    uint index = position.x*_Rows + position.y;
                 #else
-                    float2 samplePos = (float2(index%4, index/4)+localSample)/4.0;
+                    uint index = position.x + position.y*_Columns;
                 #endif
+                
+                float2 localSample = float2(frac(i.uv.x*_Columns), frac(i.uv.y*_Rows));
+                float2 samplePos = (float2(index%4, index/4)+localSample)/4.0;
 
                 if((composite & (1<<index)) == 0 || index >= 16) discard;
                 fixed4 col = tex2Dlod(_MainTex, float4(samplePos, 0.0, 0.0));
