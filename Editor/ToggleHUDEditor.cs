@@ -2,7 +2,6 @@
 using UnityEngine;
 using UnityEditor;
 using UnityEngine.Networking;
-using Unity.Jobs;
 
 public class ToggleHUDEditor : ShaderGUI
 {
@@ -54,7 +53,7 @@ public class ToggleHUDEditor : ShaderGUI
         MaterialProperty columns = ShaderGUI.FindProperty("_Columns", properties);
         MaterialProperty flipHor = ShaderGUI.FindProperty("_FlipHorizontal", properties);
         MaterialProperty flipVer = ShaderGUI.FindProperty("_FlipVertical", properties);
-        MaterialProperty renderQueue = ShaderGUI.FindProperty("_FlipVertical", properties);
+        MaterialProperty flipOrder = ShaderGUI.FindProperty("_OrderVertical", properties);
 
         MaterialProperty[] togglesMaterial = new MaterialProperty[16]
         {
@@ -180,13 +179,29 @@ public class ToggleHUDEditor : ShaderGUI
 
                 using (new EditorGUILayout.VerticalScope("HelpBox")) //Vertical Formatting
                 {
-                    materialEditor.ShaderProperty(flipHor, new GUIContent("Flip Horizontal", "Swap the UI to render from right to left instead of left to right"));
-                    materialEditor.ShaderProperty(flipVer, new GUIContent("Flip Vertical", "Swap the UI to render from top to bottom instead of bottom to top"));
+                    using (new EditorGUILayout.HorizontalScope()) //Horizontal Formatting
+                    {
+                        EditorGUILayout.LabelField(new GUIContent("Width", "Define the X scale of the UI"), GUILayout.Width((float)Screen.width / 4));
+                        width.floatValue = EditorGUILayout.FloatField(width.floatValue);
+                    }
+
+                    using (new EditorGUILayout.HorizontalScope()) //Horizontal Formatting
+                    {
+                        EditorGUILayout.LabelField(new GUIContent("Height", "Define the Y scale of the UI"), GUILayout.Width((float)Screen.width / 4));
+                        height.floatValue = EditorGUILayout.FloatField(height.floatValue);
+                    }
                 }
             }
 
             using (new EditorGUILayout.HorizontalScope()) //Horizontal Formatting
             {
+                using (new EditorGUILayout.VerticalScope("HelpBox")) //Vertical Formatting
+                {
+                    materialEditor.ShaderProperty(flipHor, new GUIContent("Flip Horizontal", "Swap the UI to render from right to left instead of left to right"));
+                    materialEditor.ShaderProperty(flipVer, new GUIContent("Flip Vertical", "Swap the UI to render from top to bottom instead of bottom to top"));
+                    materialEditor.ShaderProperty(flipOrder, new GUIContent("Flip Ordering", "Swap the direction the UI orders the icons to vertical instead of horizontal"));
+                }
+
                 using (new EditorGUILayout.VerticalScope("HelpBox")) //Vertical Formatting
                 {
                     using (new EditorGUILayout.HorizontalScope()) //Horizontal Formatting
@@ -200,124 +215,216 @@ public class ToggleHUDEditor : ShaderGUI
                         EditorGUILayout.LabelField(new GUIContent("Y Position", "Define where the UI will render in Y viewspace"), GUILayout.Width((float) Screen.width / 4));
                         yPos.floatValue = EditorGUILayout.FloatField(yPos.floatValue);
                     }
+                    
+                    using (new EditorGUILayout.HorizontalScope()) //Horizontal Formatting
+                    {
+                        EditorGUILayout.LabelField(new GUIContent("Distance", "Define the simulated distance from the view"), GUILayout.Width((float)Screen.width / 4));
+                        distance.floatValue = EditorGUILayout.FloatField(distance.floatValue);
+                    }
                 }
+            }
+
+            if (Mathf.Approximately(flipOrder.floatValue, 0))
+            {
+                bool[,] toggles = new bool[(int)rows.floatValue, (int)columns.floatValue];
+                int[,] togglevalues = new int[(int)rows.floatValue, (int)columns.floatValue];
+
+                int initCount = 0;
+
+                for (int i = 0; i < rows.floatValue; i++)
+                {
+                    for (int j = 0; j < columns.floatValue; j++)
+                    {
+                        toggles[i, j] = Mathf.Approximately(togglesMaterial[initCount].floatValue, 1);
+                        togglevalues[i, j] = initCount + 1;
+                        initCount++;
+                    }
+                }
+
+                EditorGUI.BeginChangeCheck();
 
                 using (new EditorGUILayout.VerticalScope("HelpBox")) //Vertical Formatting
                 {
-                    using (new EditorGUILayout.HorizontalScope()) //Horizontal Formatting
+                    EditorGUILayout.LabelField(new GUIContent("Toggle UI Elements", "Toggle the display of each UI icon using the checkboxes below"), GUILayout.Width((float) Screen.width / 2));
+
+                    EditorGUILayout.Space(); //add space
+
+                    if (Mathf.Approximately(flipHor.floatValue, 0) && Mathf.Approximately(flipVer.floatValue, 0))
                     {
-                        EditorGUILayout.LabelField(new GUIContent("Width", "Define the X scale of the UI"), GUILayout.Width((float) Screen.width / 4));
-                        width.floatValue = EditorGUILayout.FloatField(width.floatValue);
+                        for (int i = (int) rows.floatValue - 1; i >= 0; i--)
+                        {
+                            EditorGUILayout.BeginHorizontal();
+                            for (int j = 0; j < columns.floatValue; j++)
+                            {
+                                EditorGUILayout.BeginVertical("HelpBox");
+                                toggles[i, j] = EditorGUILayout.ToggleLeft(new GUIContent(togglevalues[i, j].ToString() + " - " + (toggles[i, j] ? "On " : "Off"), "Toggles this UI " + (toggles[i, j] ? "Off " : "On")), toggles[i, j], GUILayout.Width(70));
+                                EditorGUILayout.EndVertical();
+                            }
+
+                            EditorGUILayout.EndHorizontal();
+                        }
+                    }
+                    else if (Mathf.Approximately(flipHor.floatValue, 0) && Mathf.Approximately(flipVer.floatValue, 1))
+                    {
+                        for (int i = 0; i < rows.floatValue; i++)
+                        {
+                            EditorGUILayout.BeginHorizontal();
+                            for (int j = 0; j < columns.floatValue; j++)
+                            {
+                                EditorGUILayout.BeginVertical("HelpBox");
+                                toggles[i, j] = EditorGUILayout.ToggleLeft(new GUIContent(togglevalues[i, j].ToString() + " - " + (toggles[i, j] ? "On " : "Off"), "Toggles this UI " + (toggles[i, j] ? "Off " : "On")), toggles[i, j], GUILayout.Width(70));
+                                EditorGUILayout.EndVertical();
+                            }
+
+                            EditorGUILayout.EndHorizontal();
+                        }
+                    }
+                    else if (Mathf.Approximately(flipHor.floatValue, 1) && Mathf.Approximately(flipVer.floatValue, 0))
+                    {
+                        for (int i = (int) rows.floatValue - 1; i >= 0; i--)
+                        {
+                            EditorGUILayout.BeginHorizontal();
+                            for (int j = (int) columns.floatValue - 1; j >= 0; j--)
+                            {
+                                EditorGUILayout.BeginVertical("HelpBox");
+                                toggles[i, j] = EditorGUILayout.ToggleLeft(new GUIContent(togglevalues[i, j].ToString() + " - " + (toggles[i, j] ? "On " : "Off"), "Toggles this UI " + (toggles[i, j] ? "Off " : "On")), toggles[i, j], GUILayout.Width(70));
+                                EditorGUILayout.EndVertical();
+                            }
+
+                            EditorGUILayout.EndHorizontal();
+                        }
+                    }
+                    else if (Mathf.Approximately(flipHor.floatValue, 1) && Mathf.Approximately(flipVer.floatValue, 1))
+                    {
+                        for (int i = 0; i < rows.floatValue; i++)
+                        {
+                            EditorGUILayout.BeginHorizontal();
+                            for (int j = (int)columns.floatValue - 1; j >= 0; j--)
+                            {
+                                EditorGUILayout.BeginVertical("HelpBox");
+                                toggles[i, j] = EditorGUILayout.ToggleLeft(new GUIContent(togglevalues[i, j].ToString() + " - " + (toggles[i, j] ? "On " : "Off"), "Toggles this UI " + (toggles[i, j] ? "Off " : "On")), toggles[i, j], GUILayout.Width(70));
+                                EditorGUILayout.EndVertical();
+                            }
+
+                            EditorGUILayout.EndHorizontal();
+                        }
                     }
 
-                    using (new EditorGUILayout.HorizontalScope()) //Horizontal Formatting
+                    if (EditorGUI.EndChangeCheck())
                     {
-                        EditorGUILayout.LabelField(new GUIContent("Height", "Define the Y scale of the UI"), GUILayout.Width((float) Screen.width / 4));
-                        height.floatValue = EditorGUILayout.FloatField(height.floatValue);
+                        int finCount = 0;
+
+                        for (int i = 0; i < rows.floatValue; i++)
+                        {
+                            for (int j = 0; j < columns.floatValue; j++)
+                            {
+                                togglesMaterial[finCount].floatValue = toggles[i, j] ? 1f : 0f;
+                                finCount++;
+                            }
+                        }
                     }
                 }
             }
-
-            using (new EditorGUILayout.HorizontalScope("HelpBox")) //Horizontal Formatting
+            else
             {
-                EditorGUILayout.LabelField(new GUIContent("Distance", "Define the simulated distance from the view"), GUILayout.Width((float) Screen.width / 2));
-                distance.floatValue = EditorGUILayout.FloatField(distance.floatValue);
-            }
-            
-            bool[,] toggles = new bool[(int)rows.floatValue, (int)columns.floatValue];
-            int[,] togglevalues = new int[(int)rows.floatValue, (int)columns.floatValue];
+                bool[,] toggles = new bool[(int)columns.floatValue, (int)rows.floatValue];
+                int[,] togglevalues = new int[(int)columns.floatValue, (int)rows.floatValue];
 
-            int initCount = 0;
+                int initCount = 0;
 
-            for (int i = 0; i < rows.floatValue; i++)
-            {
-                for (int j = 0; j < columns.floatValue; j++)
+                for (int i = 0; i < columns.floatValue; i++)
                 {
-                    toggles[i, j] = Mathf.Approximately(togglesMaterial[initCount].floatValue, 1);
-                    togglevalues[i, j] = initCount + 1;
-                    initCount++;
-                }
-            }
-
-            EditorGUI.BeginChangeCheck();
-
-            using (new EditorGUILayout.VerticalScope("HelpBox")) //Vertical Formatting
-            {
-                EditorGUILayout.LabelField(new GUIContent("Toggle UI Elements", "Toggle the display of each UI icon using the checkboxes below"), GUILayout.Width((float) Screen.width / 2));
-
-                EditorGUILayout.Space(); //add space
-
-                if (Mathf.Approximately(flipHor.floatValue, 0) && Mathf.Approximately(flipVer.floatValue, 0))
-                {
-                    for (int i = (int) rows.floatValue - 1; i >= 0; i--)
+                    for (int j = 0; j < rows.floatValue; j++)
                     {
-                        EditorGUILayout.BeginHorizontal();
-                        for (int j = 0; j < columns.floatValue; j++)
-                        {
-                            EditorGUILayout.BeginVertical("HelpBox");
-                            toggles[i, j] = EditorGUILayout.ToggleLeft(new GUIContent(togglevalues[i, j].ToString() + " - " + (toggles[i, j] ? "On " : "Off"), "Toggles this UI " + (toggles[i, j] ? "Off " : "On")), toggles[i, j], GUILayout.Width(70));
-                            EditorGUILayout.EndVertical();
-                        }
-
-                        EditorGUILayout.EndHorizontal();
-                    }
-                }
-                else if (Mathf.Approximately(flipHor.floatValue, 0) && Mathf.Approximately(flipVer.floatValue, 1))
-                {
-                    for (int i = 0; i < rows.floatValue; i++)
-                    {
-                        EditorGUILayout.BeginHorizontal();
-                        for (int j = 0; j < columns.floatValue; j++)
-                        {
-                            EditorGUILayout.BeginVertical("HelpBox");
-                            toggles[i, j] = EditorGUILayout.ToggleLeft(new GUIContent(togglevalues[i, j].ToString() + " - " + (toggles[i, j] ? "On " : "Off"), "Toggles this UI " + (toggles[i, j] ? "Off " : "On")), toggles[i, j], GUILayout.Width(70));
-                            EditorGUILayout.EndVertical();
-                        }
-
-                        EditorGUILayout.EndHorizontal();
-                    }
-                }
-                else if (Mathf.Approximately(flipHor.floatValue, 1) && Mathf.Approximately(flipVer.floatValue, 1))
-                {
-                    for (int i = 0; i < rows.floatValue; i++)
-                    {
-                        EditorGUILayout.BeginHorizontal();
-                        for (int j = (int) columns.floatValue - 1; j >= 0; j--)
-                        {
-                            EditorGUILayout.BeginVertical("HelpBox");
-                            toggles[i, j] = EditorGUILayout.ToggleLeft(new GUIContent(togglevalues[i, j].ToString() + " - " + (toggles[i, j] ? "On " : "Off"), "Toggles this UI " + (toggles[i, j] ? "Off " : "On")), toggles[i, j], GUILayout.Width(70));
-                            EditorGUILayout.EndVertical();
-                        }
-
-                        EditorGUILayout.EndHorizontal();
-                    }
-                }
-                else if (Mathf.Approximately(flipHor.floatValue, 1) && Mathf.Approximately(flipVer.floatValue, 0))
-                {
-                    for (int i = (int) rows.floatValue - 1; i >= 0; i--)
-                    {
-                        EditorGUILayout.BeginHorizontal();
-                        for (int j = (int) columns.floatValue - 1; j >= 0; j--)
-                        {
-                            EditorGUILayout.BeginVertical("HelpBox");
-                            toggles[i, j] = EditorGUILayout.ToggleLeft(new GUIContent(togglevalues[i, j].ToString() + " - " + (toggles[i, j] ? "On " : "Off"), "Toggles this UI " + (toggles[i, j] ? "Off " : "On")), toggles[i, j], GUILayout.Width(70));
-                            EditorGUILayout.EndVertical();
-                        }
-
-                        EditorGUILayout.EndHorizontal();
+                        toggles[i, j] = Mathf.Approximately(togglesMaterial[initCount].floatValue, 1);
+                        togglevalues[i, j] = initCount + 1;
+                        initCount++;
                     }
                 }
 
-                if (EditorGUI.EndChangeCheck())
-                {
-                    int finCount = 0;
+                EditorGUI.BeginChangeCheck();
 
-                    for (int i = 0; i < rows.floatValue; i++)
+                using (new EditorGUILayout.VerticalScope("HelpBox")) //Vertical Formatting
+                {
+                    EditorGUILayout.LabelField(new GUIContent("Toggle UI Elements", "Toggle the display of each UI icon using the checkboxes below"), GUILayout.Width((float)Screen.width / 2));
+
+                    EditorGUILayout.Space(); //add space
+
+                    using (new EditorGUILayout.HorizontalScope()) //Vertical Formatting
                     {
-                        for (int j = 0; j < columns.floatValue; j++)
+                        if (Mathf.Approximately(flipHor.floatValue, 0) && Mathf.Approximately(flipVer.floatValue, 0))
                         {
-                            togglesMaterial[finCount].floatValue = toggles[i, j] ? 1f : 0f;
-                            finCount++;
+                            for (int i = 0; i < columns.floatValue; i++)
+                            {
+                                EditorGUILayout.BeginVertical();
+                                for (int j = (int)rows.floatValue - 1; j >= 0; j--)
+                                {
+                                    EditorGUILayout.BeginHorizontal("HelpBox");
+                                    toggles[i, j] = EditorGUILayout.ToggleLeft(new GUIContent(togglevalues[i, j].ToString() + " - " + (toggles[i, j] ? "On " : "Off"), "Toggles this UI " + (toggles[i, j] ? "Off " : "On")), toggles[i, j], GUILayout.Width(70));
+                                    EditorGUILayout.EndHorizontal();
+                                }
+
+                                EditorGUILayout.EndVertical();
+                            }
+                        }
+                        else if (Mathf.Approximately(flipHor.floatValue, 1) && Mathf.Approximately(flipVer.floatValue, 0))
+                        {
+                            for (int i = (int)columns.floatValue - 1; i >= 0; i--)
+                            {
+                                EditorGUILayout.BeginVertical();
+                                for (int j = (int)rows.floatValue - 1; j >= 0; j--)
+                                {
+                                    EditorGUILayout.BeginHorizontal("HelpBox");
+                                    toggles[i, j] = EditorGUILayout.ToggleLeft(new GUIContent(togglevalues[i, j].ToString() + " - " + (toggles[i, j] ? "On " : "Off"), "Toggles this UI " + (toggles[i, j] ? "Off " : "On")), toggles[i, j], GUILayout.Width(70));
+                                    EditorGUILayout.EndHorizontal();
+                                }
+
+                                EditorGUILayout.EndVertical();
+                            }
+                        }
+                        else if (Mathf.Approximately(flipHor.floatValue, 0) && Mathf.Approximately(flipVer.floatValue, 1))
+                        {
+                            for (int i = 0; i < columns.floatValue; i++)
+                            {
+                                EditorGUILayout.BeginVertical();
+                                for (int j = 0; j < rows.floatValue; j++)
+                                {
+                                    EditorGUILayout.BeginHorizontal("HelpBox");
+                                    toggles[i, j] = EditorGUILayout.ToggleLeft(new GUIContent(togglevalues[i, j].ToString() + " - " + (toggles[i, j] ? "On " : "Off"), "Toggles this UI " + (toggles[i, j] ? "Off " : "On")), toggles[i, j], GUILayout.Width(70));
+                                    EditorGUILayout.EndHorizontal();
+                                }
+
+                                EditorGUILayout.EndVertical();
+                            }
+                        }
+                        else if (Mathf.Approximately(flipHor.floatValue, 1) && Mathf.Approximately(flipVer.floatValue, 1))
+                        {
+                            for (int i = (int)columns.floatValue - 1; i >= 0; i--)
+                            {
+                                EditorGUILayout.BeginVertical();
+                                for (int j = 0; j < rows.floatValue; j++)
+                                {
+                                    EditorGUILayout.BeginHorizontal("HelpBox");
+                                    toggles[i, j] = EditorGUILayout.ToggleLeft(new GUIContent(togglevalues[i, j].ToString() + " - " + (toggles[i, j] ? "On " : "Off"), "Toggles this UI " + (toggles[i, j] ? "Off " : "On")), toggles[i, j], GUILayout.Width(70));
+                                    EditorGUILayout.EndHorizontal();
+                                }
+
+                                EditorGUILayout.EndVertical();
+                            }
+                        }
+
+                        if (EditorGUI.EndChangeCheck())
+                        {
+                            int finCount = 0;
+
+                            for (int i = 0; i < columns.floatValue; i++)
+                            {
+                                for (int j = 0; j < rows.floatValue; j++)
+                                {
+                                    togglesMaterial[finCount].floatValue = toggles[i, j] ? 1f : 0f;
+                                    finCount++;
+                                }
+                            }
                         }
                     }
                 }
