@@ -16,7 +16,6 @@ public class ToggleHUDEditor : ShaderGUI
     private static TextureDownloader IconDiscordDownloader;
     private static TextureDownloader IconGithubDownloader;
     private static TextureDownloader IconStoreDownloader;
-    private static bool TexturesInitialized = false;
 
     public ToggleHUDEditor(){
         if(UIGridTextureDownloader == null)
