@@ -1,6 +1,7 @@
 ﻿Shader "Quantum/JustSleightly/ToggleHUD"{
     Properties{
         _MainTex ("Texture", 2D) = "white" {}
+        [HDR]_UIColor ("UI Color", Color) = (1,1,1,1)
         _RotX ("X Position", Float) = 0.0
         _RotY ("Y Position", Float) = 0.0
         _Dist ("Distance", Float) = 1.0
@@ -58,6 +59,7 @@
 
             sampler2D _MainTex;
             float4 _MainTex_ST;
+            float4 _UIColor;
             float _RotX;
             float _RotY;
             float _Dist;
@@ -127,7 +129,7 @@
 
                 if((composite & (1<<index)) == 0 || index >= 16) discard;
                 fixed4 col = tex2Dlod(_MainTex, float4(samplePos, 0.0, 0.0));
-                return col;
+                return col * _UIColor;
             }
             ENDCG
         }
