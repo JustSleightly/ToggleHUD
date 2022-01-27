@@ -42,6 +42,7 @@ public class ToggleHUDEditor : ShaderGUI
 
         Material targetMat = materialEditor.target as Material;
 
+        MaterialProperty uiColor = ShaderGUI.FindProperty("_UIColor", properties);
         MaterialProperty mainTexture2D = ShaderGUI.FindProperty("_MainTex", properties);
         MaterialProperty xPos = ShaderGUI.FindProperty("_RotX", properties);
         MaterialProperty yPos = ShaderGUI.FindProperty("_RotY", properties);
@@ -112,8 +113,9 @@ public class ToggleHUDEditor : ShaderGUI
 
         using (new EditorGUILayout.VerticalScope("ObjectPickerPreviewBackground")) //Vertical Formatting
         {
-            using (new EditorGUILayout.HorizontalScope("HelpBox")) //Horizontal Formatting
+            using (new EditorGUILayout.VerticalScope("HelpBox")) //Horizontal Formatting
             {
+                materialEditor.ShaderProperty(uiColor, new GUIContent("UI Color", "Select an HDR color to multiply with the UI. The alpha should not be maxed to prevent OLED burn-in"));
                 materialEditor.ShaderProperty(mainTexture2D, new GUIContent("UI Texture", "Provide an appropriate texture sheet/grid for your desired icons"));
             }
 
