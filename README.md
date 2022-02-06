@@ -135,7 +135,7 @@ Change the directions in which the icons are displayed
 
 <blockquote>
 
-Define where the UI will render in viewspace
+Define where the UI will render in viewspace. Some sample values can be found in the [FAQ](https://github.com/JustSleightly/ToggleHUD#frequently-asked-questions).
 
 </details>
 
@@ -180,6 +180,27 @@ Sample animator controller and VRC 3.0 Menu/Parameters files are included for yo
 ---
 
 # Frequently Asked Questions
+
+<details>
+
+  <summary> <strong> How should I position my HUD?  </strong> </summary>
+
+######
+
+<blockquote>
+
+This may end up being a lot of guess and check depending on your preferred rows/columns and width/height.
+
+Personally, I often use ToggleHUD in a 3 Row 5 Column layout with a Width/Height of 6 and Distance of 1, and I've found the following values to be the best for me:
+
+| HUD Position  | X Value | Y Value | Flip Hor | Flip Ver |
+| ------------- | ------------- | ------------- | ------------- | ------------- |
+| Top Left | -11 | -8 | :white_square_button: | :white_square_button: |
+| Top Right | +15 | -8 | :white_square_button: | :white_check_mark: |
+| Bottom Left | -6 | +16 | :white_check_mark: | :white_check_mark: |
+| Bottom Right | +15 | +16 | :white_check_mark: | :white_check_mark: |
+
+</details>
 
 <details>
 
