@@ -1,0 +1,83 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1506855854, guid: 67cc4cb7839cd3741b63733d5adf0442, type: 3}
+  m_Name: ToggleHUD Parameters
+  m_EditorClassIdentifier: 
+  parameters:
+  - name: ToggleHUD/Display
+    valueType: 2
+    saved: 0
+    defaultValue: 0
+  - name: ToggleHUD/1
+    valueType: 2
+    saved: 0
+    defaultValue: 0
+  - name: ToggleHUD/2
+    valueType: 2
+    saved: 0
+    defaultValue: 0
+  - name: ToggleHUD/3
+    valueType: 2
+    saved: 0
+    defaultValue: 0
+  - name: ToggleHUD/4
+    valueType: 2
+    saved: 0
+    defaultValue: 0
+  - name: ToggleHUD/5
+    valueType: 2
+    saved: 0
+    defaultValue: 0
+  - name: ToggleHUD/6
+    valueType: 2
+    saved: 0
+    defaultValue: 0
+  - name: ToggleHUD/7
+    valueType: 2
+    saved: 0
+    defaultValue: 0
+  - name: ToggleHUD/8
+    valueType: 2
+    saved: 0
+    defaultValue: 0
+  - name: ToggleHUD/9
+    valueType: 2
+    saved: 0
+    defaultValue: 0
+  - name: ToggleHUD/10
+    valueType: 2
+    saved: 0
+    defaultValue: 0
+  - name: ToggleHUD/11
+    valueType: 2
+    saved: 0
+    defaultValue: 0
+  - name: ToggleHUD/12
+    valueType: 2
+    saved: 0
+    defaultValue: 0
+  - name: ToggleHUD/13
+    valueType: 2
+    saved: 0
+    defaultValue: 0
+  - name: ToggleHUD/14
+    valueType: 2
+    saved: 0
+    defaultValue: 0
+  - name: ToggleHUD/15
+    valueType: 2
+    saved: 0
+    defaultValue: 0
+  - name: ToggleHUD/16
+    valueType: 2
+    saved: 0
+    defaultValue: 0
