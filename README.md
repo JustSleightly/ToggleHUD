@@ -2,11 +2,12 @@
 
 [![GitHub stars](https://img.shields.io/github/stars/JustSleightly/ToggleHUD)](https://github.com/JustSleightly/ToggleHUD/stargazers) [![GitHub Tags](https://img.shields.io/github/tag/JustSleightly/ToggleHUD)](https://github.com/JustSleightly/ToggleHUD/tags) [![GitHub release (latest by date including pre-releases)](https://img.shields.io/github/v/release/JustSleightly/ToggleHUD?include_prereleases)](https://github.com/JustSleightly/ToggleHUD/releases) [![GitHub issues](https://img.shields.io/github/issues/JustSleightly/ToggleHUD)](https://github.com/JustSleightly/ToggleHUD/issues) [![GitHub last commit](https://img.shields.io/github/last-commit/JustSleightly/ToggleHUD)](https://github.com/JustSleightly/ToggleHUD/commits/main) [![Discord](https://img.shields.io/discord/780192344800362506)](https://discord.sleightly.dev/) ![Twitter Follow](https://img.shields.io/twitter/follow/SleightlyDev?style=social)
 
+![](https://github.com/JustSleightly/ToggleHUD/blob/main/Documentation/Gifs/In-Game%20Demo.gif)
 ![](https://raw.githubusercontent.com/JustSleightly/ToggleHUD/main/Documentation/Images/Material%20Editor.png)
 
 **ToggleHUD** is a ViewSpace UI shader with the ability to independently display and toggle up to 16 icons from a single texture sheet. These toggles are animatable, allowing for usage as a HUD UI indicating the status of other animations/features. Unlike other screenspace shaders, this UI is built for VR and can simulate depth and curve so as to not rest to close to the user's eyes.
 
-### Download the [latest version](https://github.com/JustSleightly/ToggleHUD/releases)!
+### Download the [latest version](https://github.com/JustSleightly/ToggleHUD/releases) for free!
 
 ### Commercial Usage Licenses available now at [store.sleightly.dev](https://store.sleightly.dev/)!
 
@@ -24,13 +25,34 @@
 
 ######
 
+# Disclaimer/Usage
+
+Please have enough relevant experience in Unity and your VR Platform before using this, including knowledge of Unity's animation/animator controller system, and third-party systems such as VRChat's 3.0 system. Sample animation clips and VRC 3.0 resources are available for reference, but should not be used directly and are intended to be implemented in your own use cases.
+
+ToggleHUD usage is intended for personal use only, and cannot be use commercially for any paid projects or redistributable packages. For any additional questions regarding licensing/usage, please reach out to **JustSleightly#0001**.
+
+| Usage  | Personal | Commercial |
+| ------------- | ------------- | ------------- |
+| Personal Private Uploads | :white_check_mark: | :white_check_mark: |
+| Public Uploads | :white_square_button: | :white_check_mark: |
+| For Sale Uploads | :white_square_button: | :white_check_mark: |
+| Commissioned Uploads | :white_square_button: | :white_check_mark: |
+| Free Packages | :white_square_button: | :white_check_mark: |
+| For Sale Packages | :white_square_button: | :white_check_mark: |
+| Commissioned Packages | :white_square_button: | :white_check_mark: |
+| Commercial Media | :white_square_button: | :white_check_mark: |
+
+######
+
 # Installation
+
+The below instructions are just one example method of utilizing ToggleHUD with the included sample prefab. Advanced users do not necessarily have to use this mesh and setup.
 
 Navigate in your project files to *Assets/Shaders/Quantum/ToggleHUD/Samples/Prefabs* and drag in the ToggleHUD.prefab into the scene for Unity base scaling, then onto your desired avatar. Expand the ToggleHUD object to reveal the ProxyRoot.Head object, and move ProxyRoot.Head onto your avatar's Head bone. Reset the transform of ProxyRoot.Head by right-clicking the Transform module in the inspector, and clicking Reset.
 
 ######
 
-# Usage
+# Configuration
 
 ### Preparing the Texture
 
@@ -142,6 +164,20 @@ Toggle the display of each of the UI icons using the respective checkboxes
 
 </details>
 
+######
+
+# Animating the UI
+
+It is recommended to implement animation properties from ToggleHUD into your pre-existing animation clips so that they supplement your animator logic.
+
+<ins> If using for multiplayer platforms such as **VRChat**,</ins> please animate the HUD to enable only **locally** using a parameter such as **[IsLocal](https://docs.vrchat.com/docs/animator-parameters)**.
+
+Sample animation clips are included for you to copy/paste animation properties over to your own. They should not need to be re-pathed if you use the included prefab unless you change the names of the prefab objects in the hierarchy.
+
+Sample animator controller and VRC 3.0 Menu/Parameters files are included for your reference, but you should be integrating into your own implementations.
+
+######
+
 ---
 
 # Frequently Asked Questions
@@ -154,7 +190,11 @@ Toggle the display of each of the UI icons using the respective checkboxes
 
 <blockquote>
 
-Assuming you have a **commercial license** for ToggleHUD, the shader files can be found at *Assets/Shaders/Quantum/ToggleHUD*. The minimum files to export are the ToggleHUD.shader and the Editor folder, then whatever material and texture you used with it.
+Assuming you have a **commercial license** for ToggleHUD, the shader files can be found at *Assets/Shaders/Quantum/ToggleHUD*. 
+
+The minimum files to export are the ToggleHUD.shader and the Editor folder, then whatever material and texture you used with it.
+
+If you used the sample prefab, be sure to also include the sample mesh/material if used found at *Assets/Shaders/Quantum/ToggleHUD/Sample*.
 
 </details>
 
