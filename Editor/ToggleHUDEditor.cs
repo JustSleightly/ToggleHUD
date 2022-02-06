@@ -18,19 +18,19 @@ public class ToggleHUDEditor : ShaderGUI
     private static TextureDownloader IconStoreDownloader;
 
     public ToggleHUDEditor(){
-        if(UIGridTextureDownloader == null)
+        if (UIGridTextureDownloader == null)
             UIGridTextureDownloader = new TextureDownloader("https://raw.githubusercontent.com/JustSleightly/ToggleHUD/main/Sample/Textures/UI%20Grid%20Numbered.png");
 
-        if(IconJSLogoDownloader == null)
+        if (IconJSLogoDownloader == null)
             IconJSLogoDownloader = new TextureDownloader("https://github.com/JustSleightly/Resources/raw/main/Icons/JSLogo.png");
 
-        if(IconDiscordDownloader == null)
+        if (IconDiscordDownloader == null)
             IconDiscordDownloader = new TextureDownloader("https://github.com/JustSleightly/Resources/raw/main/Icons/Discord.png");
 
-        if(IconGithubDownloader == null)
+        if (IconGithubDownloader == null)
             IconGithubDownloader = new TextureDownloader("https://github.com/JustSleightly/Resources/raw/main/Icons/GitHub.png");
 
-        if(IconStoreDownloader == null)
+        if (IconStoreDownloader == null)
             IconStoreDownloader = new TextureDownloader("https://github.com/JustSleightly/Resources/raw/main/Icons/Store.png");
     }
     
