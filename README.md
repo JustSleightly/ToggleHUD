@@ -2,7 +2,7 @@
 
 [![GitHub stars](https://img.shields.io/github/stars/JustSleightly/ToggleHUD)](https://github.com/JustSleightly/ToggleHUD/stargazers) [![GitHub Tags](https://img.shields.io/github/tag/JustSleightly/ToggleHUD)](https://github.com/JustSleightly/ToggleHUD/tags) [![GitHub release (latest by date including pre-releases)](https://img.shields.io/github/v/release/JustSleightly/ToggleHUD?include_prereleases)](https://github.com/JustSleightly/ToggleHUD/releases) [![GitHub issues](https://img.shields.io/github/issues/JustSleightly/ToggleHUD)](https://github.com/JustSleightly/ToggleHUD/issues) [![GitHub last commit](https://img.shields.io/github/last-commit/JustSleightly/ToggleHUD)](https://github.com/JustSleightly/ToggleHUD/commits/main) [![Discord](https://img.shields.io/discord/780192344800362506)](https://discord.sleightly.dev/) ![Twitter Follow](https://img.shields.io/twitter/follow/SleightlyDev?style=social)
 
-![](https://raw.githubusercontent.com/JustSleightly/ToggleHUD/main/Documentation/Images/Material%20Editor.png?token=AR557II54Q3CJSEDMXJDDYTBZ7PSK)
+![](https://raw.githubusercontent.com/JustSleightly/ToggleHUD/main/Documentation/Images/Material%20Editor.png)
 
 **ToggleHUD** is a ViewSpace UI shader with the ability to independently display and toggle up to 16 icons from a single texture sheet. These toggles are animatable, allowing for usage as a HUD UI indicating the status of other animations/features. Unlike other screenspace shaders, this UI is built for VR and can simulate depth and curve so as to not rest to close to the user's eyes.
 
@@ -36,9 +36,21 @@ Navigate in your project files to *Assets/Shaders/Quantum/ToggleHUD/Samples/Pref
 
 Prepare your icons in any 4 x 4 grid of your choice. A sample template can be found [here](https://raw.githubusercontent.com/JustSleightly/ToggleHUD/main/Sample/Textures/UI%20Grid%20Blank.png). The order the icons are displayed in the shader are as follows:
 
-[<img src="https://raw.githubusercontent.com/JustSleightly/ToggleHUD/main/Sample/Textures/UI%20Grid%20Numbered.png" width="300" height="300">](https://github.com/JustSleightly/ToggleHUD/tree/main/Sample/Textures/ "JustSleightly")
+[<img src="https://raw.githubusercontent.com/JustSleightly/ToggleHUD/main/Sample/Textures/UI%20Grid%20Numbered.png" width="300" height="300">](https://github.com/JustSleightly/ToggleHUD/tree/main/Sample/Textures/ "Sample UI Textures")
 
 ### Material Settings
+
+<details open>
+
+  <summary> <strong> UI Color </strong> </summary>
+
+######
+
+<blockquote>
+
+Select an HDR color to multiply with the UI. The alpha should not be maxed to prevent OLED burn-in
+
+</details>
 
 <details open>
 
@@ -62,29 +74,8 @@ Insert your prepared texture into this texture field, and leave the Tiling at 1,
 
 Define how many rows and columns of icons you want displayed. These rows and columns may not display more than 16 icons
 
-</details>
 
-<details open>
-
-  <summary> <strong> Flip Horizontal/Vertical </strong> </summary>
-
-######
-
-<blockquote>
-
-Change the directions in which the icons are displayed
-
-</details>
-
-<details open>
-
-  <summary> <strong> X/Y Position </strong> </summary>
-
-######
-
-<blockquote>
-
-Define where the UI will render in viewspace
+![](https://raw.githubusercontent.com/JustSleightly/ToggleHUD/main/Documentation/Gifs/RowsColumns.gif)
 
 </details>
 
@@ -97,6 +88,33 @@ Define where the UI will render in viewspace
 <blockquote>
 
 Define the 2D scale of the UI
+
+</details>
+
+<details open>
+
+  <summary> <strong> Flip Horizontal/Vertical/Ordering </strong> </summary>
+
+######
+
+<blockquote>
+
+Change the directions in which the icons are displayed
+
+
+![](https://raw.githubusercontent.com/JustSleightly/ToggleHUD/main/Documentation/Gifs/Flip%20HorVerOrder.gif)
+
+</details>
+
+<details open>
+
+  <summary> <strong> X/Y Position </strong> </summary>
+
+######
+
+<blockquote>
+
+Define where the UI will render in viewspace
 
 </details>
 
