@@ -2,7 +2,7 @@
 
 [![GitHub stars](https://img.shields.io/github/stars/JustSleightly/ToggleHUD)](https://github.com/JustSleightly/ToggleHUD/stargazers) [![GitHub Tags](https://img.shields.io/github/tag/JustSleightly/ToggleHUD)](https://github.com/JustSleightly/ToggleHUD/tags) [![GitHub release (latest by date including pre-releases)](https://img.shields.io/github/v/release/JustSleightly/ToggleHUD?include_prereleases)](https://github.com/JustSleightly/ToggleHUD/releases) [![GitHub issues](https://img.shields.io/github/issues/JustSleightly/ToggleHUD)](https://github.com/JustSleightly/ToggleHUD/issues) [![GitHub last commit](https://img.shields.io/github/last-commit/JustSleightly/ToggleHUD)](https://github.com/JustSleightly/ToggleHUD/commits/main) [![Discord](https://img.shields.io/discord/780192344800362506)](https://discord.sleightly.dev/) ![Twitter Follow](https://img.shields.io/twitter/follow/SleightlyDev?style=social)
 
-[<img src="https://github.com/JustSleightly/ToggleHUD/blob/main/Documentation/Gifs/In-Game%20Demo.gif" height="450">](https://github.com/JustSleightly/ToggleHUD/blob/main/Documentation/Gifs/In-Game%20Demo.gif/ "ToggleHUD In-Game Demo")[<img src="https://raw.githubusercontent.com/JustSleightly/ToggleHUD/main/Documentation/Images/Material%20Editor.png" height="450">](https://raw.githubusercontent.com/JustSleightly/ToggleHUD/main/Documentation/Images/Material%20Editor.png/ "ToggleHUD Material Editor")
+[<img src="https://github.com/JustSleightly/ToggleHUD/blob/main/Documentation/Gifs/In-Game%20Demo.gif" height="450">](https://github.com/JustSleightly/ToggleHUD/blob/main/Documentation/Gifs/In-Game%20Demo.gif/ "ToggleHUD In-Game Demo")[<img src="https://github.com/JustSleightly/ToggleHUD/blob/main/Documentation/Images/Material%20Editor.png" height="450">](https://raw.githubusercontent.com/JustSleightly/ToggleHUD/main/Documentation/Images/Material%20Editor.png/ "ToggleHUD Material Editor")
 
 **ToggleHUD** is a ViewSpace UI shader with the ability to independently display and toggle up to 16 icons from a single texture sheet. These toggles are animatable, allowing for usage as a HUD UI indicating the status of other animations/features. Unlike other screenspace shaders, this UI is built for VR and can simulate depth and curve so as to not rest to close to the user's eyes.
 
@@ -96,7 +96,7 @@ Insert your prepared texture into this texture field, and leave the Tiling at 1,
 Define how many rows and columns of icons you want displayed. These rows and columns may not display more than 16 icons
 
 
-![](https://raw.githubusercontent.com/JustSleightly/ToggleHUD/main/Documentation/Gifs/RowsColumns.gif)
+![ToggleHUD RowsColumns](https://raw.githubusercontent.com/JustSleightly/ToggleHUD/main/Documentation/Gifs/RowsColumns.gif)
 
 </details>
 
@@ -123,7 +123,7 @@ Define the 2D scale of the UI
 Change the directions in which the icons are displayed
 
 
-![](https://raw.githubusercontent.com/JustSleightly/ToggleHUD/main/Documentation/Gifs/Flip%20HorVerOrder.gif)
+![ToggleHUD FlipHorVerOrder](https://raw.githubusercontent.com/JustSleightly/ToggleHUD/main/Documentation/Gifs/Flip%20HorVerOrder.gif)
 
 </details>
 
