@@ -35,7 +35,7 @@
         Blend SrcAlpha OneMinusSrcAlpha
         ZTest Always
         ZWrite Off
-        Cull Off
+        Cull Front
 
         Pass{
             CGPROGRAM
