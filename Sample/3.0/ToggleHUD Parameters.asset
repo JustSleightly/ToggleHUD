@@ -16,7 +16,7 @@ MonoBehaviour:
   - name: ToggleHUD/Display
     valueType: 2
     saved: 0
-    defaultValue: 0
+    defaultValue: 1
   - name: ToggleHUD/1
     valueType: 2
     saved: 0
