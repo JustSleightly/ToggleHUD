@@ -57,7 +57,7 @@ Navigate in your project files to *Assets/Shaders/Quantum/ToggleHUD/Samples/Pref
 
 Prepare your icons in any 4 x 4 grid of your choice. A sample template can be found [here](https://raw.githubusercontent.com/JustSleightly/ToggleHUD/main/Sample/Textures/UI%20Grid%20Blank.png). The order the icons are displayed in the shader are as follows:
 
-[<img src="https://raw.githubusercontent.com/JustSleightly/ToggleHUD/main/Sample/Textures/UI%20Grid%20Numbered.png" width="300" height="300">](https://github.com/JustSleightly/ToggleHUD/tree/main/Sample/Textures/ "Sample UI Textures")
+[<img src="https://github.com/JustSleightly/ToggleHUD/blob/main/Sample/Textures/UI%20Grid%20Numbered.png" width="300" height="300">](https://github.com/JustSleightly/ToggleHUD/tree/main/Sample/Textures/ "Sample UI Textures")
 
 ### Material Settings
 
@@ -96,7 +96,7 @@ Insert your prepared texture into this texture field, and leave the Tiling at 1,
 Define how many rows and columns of icons you want displayed. These rows and columns may not display more than 16 icons
 
 
-![ToggleHUD RowsColumns](https://raw.githubusercontent.com/JustSleightly/ToggleHUD/main/Documentation/Gifs/RowsColumns.gif)
+![ToggleHUD RowsColumns](https://github.com/JustSleightly/ToggleHUD/blob/main/Documentation/Gifs/RowsColumns.gif)
 
 </details>
 
@@ -123,7 +123,7 @@ Define the 2D scale of the UI
 Change the directions in which the icons are displayed
 
 
-![ToggleHUD FlipHorVerOrder](https://raw.githubusercontent.com/JustSleightly/ToggleHUD/main/Documentation/Gifs/Flip%20HorVerOrder.gif)
+![ToggleHUD FlipHorVerOrder](https://github.com/JustSleightly/ToggleHUD/blob/main/Documentation/Gifs/Flip%20HorVerOrder.gif)
 
 </details>
 
