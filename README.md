@@ -28,7 +28,7 @@
 
 Please have enough relevant experience in Unity and your VR Platform before using this, including knowledge of Unity's animation/animator controller system, and third-party systems such as VRChat's 3.0 system. Sample animation clips and VRC 3.0 resources are available for reference, but should not be used directly and are intended to be implemented in your own use cases.
 
-ToggleHUD usage is intended for personal use only, and cannot be use commercially for any paid projects or redistributable packages. For any additional questions regarding licensing/usage, please reach out to **JustSleightly#0001**.
+ToggleHUD usage is intended for personal use only, and cannot be used commercially for any paid projects or redistributable packages without a commercial license. For any additional questions regarding licensing/usage, please reach out to **JustSleightly#0001**.
 
 | Usage  | Personal | Commercial |
 | ------------- | ------------- | ------------- |
