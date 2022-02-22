@@ -4,7 +4,7 @@
 
 [<img src="https://github.com/JustSleightly/ToggleHUD/blob/main/Documentation/Gifs/In-Game%20Demo.gif" height="450">](https://github.com/JustSleightly/ToggleHUD/blob/main/Documentation/Gifs/In-Game%20Demo.gif/ "ToggleHUD In-Game Demo")[<img src="https://github.com/JustSleightly/ToggleHUD/blob/main/Documentation/Images/Material%20Editor.png" height="450">](https://github.com/JustSleightly/ToggleHUD/blob/main/Documentation/Images/Material%20Editor.png "ToggleHUD Material Editor")
 
-**ToggleHUD** is a ViewSpace UI shader with the ability to independently display and toggle up to 16 icons from a single texture sheet. These toggles are animatable, allowing for usage as a HUD UI indicating the status of other animations/features. Unlike other screenspace shaders, this UI is built for VR and can simulate depth and curve so as to not rest to close to the user's eyes.
+**ToggleHUD** is a ViewSpace UI shader with the ability to independently display and toggle up to 16 icons from a single texture sheet. These toggles are animatable, allowing for usage as a HUD UI indicating the status of other animations/features. Unlike other screenspace shaders, this UI is built for VR and can simulate depth and curve so as to not rest too close to the user's eyes.
 
 ### Download the [latest version](https://github.com/JustSleightly/ToggleHUD/releases) for free!
 
