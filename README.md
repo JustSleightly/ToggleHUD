@@ -41,7 +41,7 @@ ToggleHUD usage is intended for personal use only, and cannot be used commercial
 | Commissioned Packages | :white_square_button: | :white_check_mark: |
 | Commercial Media | :white_square_button: | :white_check_mark: |
 
-Please credit @Quantum#0846 and @JustSleightly#0001 and provide a link to the product page where applicable (https://store.sleightly.dev/l/ToggleHUD).
+Please credit **@Quantum#0846 and @JustSleightly#0001** and provide a link to the [product page](https://store.sleightly.dev/l/ToggleHUD) where applicable.
 
 ######
 
