@@ -569,7 +569,7 @@ public class ToggleHUDEditor : ShaderGUI
 
                 if (GUILayout.Button(buttonDiscordcontent, "label", GUILayout.Width(35), GUILayout.Height(35)))
                 {
-                    Application.OpenURL("https://discord.gg/UnuEEQGjn3");
+                    Application.OpenURL("https://discord.gg/27kamfTfwv");
                 }
             }
 
