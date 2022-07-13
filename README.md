@@ -51,7 +51,7 @@ Please credit **@Quantum#0846 and @JustSleightly#0001** and provide a link to th
 
 The below instructions are just one example method of utilizing ToggleHUD with the included sample prefab. Advanced users do not necessarily have to use this mesh and setup.
 
-Navigate in your project files to *Assets/Shaders/Quantum/ToggleHUD/Samples/Prefabs* and drag in the ToggleHUD.prefab into the scene for Unity base scaling, then onto your desired avatar. Expand the ToggleHUD object to reveal the ProxyRoot.Head object, and move ProxyRoot.Head onto your avatar's Head bone. Reset the transform of ProxyRoot.Head by right-clicking the Transform module in the inspector, and clicking Reset.
+Navigate in your project files to *Assets/Shaders/Quantum/ToggleHUD/Samples/Prefabs* and drag in the ToggleHUD.prefab into the scene for Unity base scaling, then onto your desired avatar. Right-click the ToggleHUD object to unpack the prefab, then expand the ToggleHUD object to reveal the ProxyRoot.Head object and move ProxyRoot.Head onto your avatar's Head bone. Reset the transform of ProxyRoot.Head by right-clicking the Transform module in the inspector, and clicking Reset.
 
 ######
 
