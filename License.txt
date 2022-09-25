@@ -1,7 +1,7 @@
 Brought to you by:
 
 Shader and Functional Design - Quantum#0846
-https://discord.gg/UnuEEQGjn3/
+https://discord.gg/u6B59rj6Qd
 https://github.com/Link250
 
 ShaderGUI Editor and Project Manager - JustSleightly#0001
@@ -14,10 +14,10 @@ https://twitter.sleightly.dev/
 
 For Licensing Information, Terms and Conditions, Full Documentation and FAQ, please go to:
 
-https://github.sleightly.dev/ToggleHUD
+https://github.sleightly.dev/togglehud
 
 
-Commercial Usage LIcenses available now at:
+Commercial Usage Licenses available now at:
 
 https://store.sleightly.dev/
 
