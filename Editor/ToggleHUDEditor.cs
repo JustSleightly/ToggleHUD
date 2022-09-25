@@ -581,7 +581,7 @@ public class ToggleHUDEditor : ShaderGUI
 
                 if (GUILayout.Button(buttonGitHubcontent, "label", GUILayout.Width(35), GUILayout.Height(35)))
                 {
-                    Application.OpenURL("https://github.sleightly.dev/ToggleHUD");
+                    Application.OpenURL("https://github.sleightly.dev/togglehud");
                 }
             }
         }
