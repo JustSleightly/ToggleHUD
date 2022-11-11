@@ -5,7 +5,8 @@ using UnityEngine.Networking;
 
 public class ToggleHUDEditor : ShaderGUI
 {
-    //Declare Icons
+    #region Declare/Download Icons
+
     private static Texture2D _uiGridTexture;
     private static Texture2D _iconJSLogo;
     private static Texture2D _iconDiscord;
@@ -34,6 +35,8 @@ public class ToggleHUDEditor : ShaderGUI
         if (_iconStoreDownloader == null)
             _iconStoreDownloader = new TextureDownloader("https://github.com/JustSleightly/Resources/raw/main/Icons/Store.png");
     }
+
+    #endregion
 
     public override void OnGUI(MaterialEditor materialEditor, MaterialProperty[] properties)
     {
@@ -76,17 +79,16 @@ public class ToggleHUDEditor : ShaderGUI
 
         #endregion
 
-        EditorGUILayout.Space(); //add space
-        EditorGUILayout.Space(); //add space
+        EditorGUILayout.Space();
+        EditorGUILayout.Space();
 
-        //Set Inputs
+        #region Sample Grid Texture
 
-        //Sample Grid Texture
         if (_uiGridTexture != null)
         {
             EditorGUILayout.LabelField("Please configure your texture sheet to be a 4 x 4 grid with the following numbering scheme:", (GUIStyle)"WordWrappedLabel");
 
-            using (new EditorGUILayout.HorizontalScope()) //Horizontal Formatting
+            using (new EditorGUILayout.HorizontalScope())
             {
                 GUILayout.FlexibleSpace();
 
@@ -98,28 +100,36 @@ public class ToggleHUDEditor : ShaderGUI
                 GUILayout.FlexibleSpace();
             }
 
-            EditorGUILayout.Space(); //add space
+            EditorGUILayout.Space();
         }
         else
         {
             EditorGUILayout.LabelField("Please configure your texture sheet to be a 4 x 4 grid with the first icon starting in the bottom left, and continuing right:", (GUIStyle)"WordWrappedLabel");
 
-            EditorGUILayout.Space(); //add space
+            EditorGUILayout.Space();
         }
 
-        using (new EditorGUILayout.VerticalScope("ObjectPickerPreviewBackground")) //Vertical Formatting
+        #endregion
+
+        using (new EditorGUILayout.VerticalScope("ObjectPickerPreviewBackground"))
         {
-            using (new EditorGUILayout.VerticalScope("HelpBox")) //Horizontal Formatting
+            #region UI Color/Texture
+
+            using (new EditorGUILayout.VerticalScope("HelpBox"))
             {
                 materialEditor.ShaderProperty(uiColor, new GUIContent("UI Color", "Select an HDR color to multiply with the UI. The alpha should not be maxed to prevent OLED burn-in"));
                 materialEditor.ShaderProperty(mainTexture2D, new GUIContent("UI Texture", "Provide an appropriate texture sheet/grid for your desired icons"));
             }
 
-            using (new EditorGUILayout.HorizontalScope()) //Horizontal Formatting
+            #endregion
+
+            #region Rows/Columns/Width/Height
+
+            using (new EditorGUILayout.HorizontalScope())
             {
-                using (new EditorGUILayout.VerticalScope("HelpBox")) //Vertical Formatting
+                using (new EditorGUILayout.VerticalScope("HelpBox"))
                 {
-                    using (new EditorGUILayout.HorizontalScope()) //Horizontal Formatting
+                    using (new EditorGUILayout.HorizontalScope())
                     {
                         EditorGUILayout.LabelField(new GUIContent("Rows", "Define how many rows you want to be displayed"), GUILayout.Width((float)Screen.width / 4));
 
@@ -146,7 +156,7 @@ public class ToggleHUDEditor : ShaderGUI
                         }
                     }
 
-                    using (new EditorGUILayout.HorizontalScope()) //Horizontal Formatting
+                    using (new EditorGUILayout.HorizontalScope())
                     {
                         EditorGUILayout.LabelField(new GUIContent("Columns", "Define how many rows you want to be displayed"), GUILayout.Width((float)Screen.width / 4));
 
@@ -174,15 +184,15 @@ public class ToggleHUDEditor : ShaderGUI
                     }
                 }
 
-                using (new EditorGUILayout.VerticalScope("HelpBox")) //Vertical Formatting
+                using (new EditorGUILayout.VerticalScope("HelpBox"))
                 {
-                    using (new EditorGUILayout.HorizontalScope()) //Horizontal Formatting
+                    using (new EditorGUILayout.HorizontalScope())
                     {
                         EditorGUILayout.LabelField(new GUIContent("Width", "Define the X scale of the UI"), GUILayout.Width((float)Screen.width / 4));
                         width.floatValue = EditorGUILayout.FloatField(width.floatValue);
                     }
 
-                    using (new EditorGUILayout.HorizontalScope()) //Horizontal Formatting
+                    using (new EditorGUILayout.HorizontalScope())
                     {
                         EditorGUILayout.LabelField(new GUIContent("Height", "Define the Y scale of the UI"), GUILayout.Width((float)Screen.width / 4));
                         height.floatValue = EditorGUILayout.FloatField(height.floatValue);
@@ -190,36 +200,44 @@ public class ToggleHUDEditor : ShaderGUI
                 }
             }
 
-            using (new EditorGUILayout.HorizontalScope()) //Horizontal Formatting
+            #endregion
+
+            #region Flip/Position/Distance
+
+            using (new EditorGUILayout.HorizontalScope())
             {
-                using (new EditorGUILayout.VerticalScope("HelpBox")) //Vertical Formatting
+                using (new EditorGUILayout.VerticalScope("HelpBox"))
                 {
                     materialEditor.ShaderProperty(flipHor, new GUIContent("Flip Horizontal", "Swap the UI to render from right to left instead of left to right"));
                     materialEditor.ShaderProperty(flipVer, new GUIContent("Flip Vertical", "Swap the UI to render from top to bottom instead of bottom to top"));
                     materialEditor.ShaderProperty(flipOrder, new GUIContent("Flip Ordering", "Swap the direction the UI orders the icons to vertical instead of horizontal"));
                 }
 
-                using (new EditorGUILayout.VerticalScope("HelpBox")) //Vertical Formatting
+                using (new EditorGUILayout.VerticalScope("HelpBox"))
                 {
-                    using (new EditorGUILayout.HorizontalScope()) //Horizontal Formatting
+                    using (new EditorGUILayout.HorizontalScope())
                     {
                         EditorGUILayout.LabelField(new GUIContent("X Position", "Define where the UI will render in X view space"), GUILayout.Width((float)Screen.width / 4));
                         xPos.floatValue = EditorGUILayout.FloatField(xPos.floatValue);
                     }
 
-                    using (new EditorGUILayout.HorizontalScope()) //Horizontal Formatting
+                    using (new EditorGUILayout.HorizontalScope())
                     {
                         EditorGUILayout.LabelField(new GUIContent("Y Position", "Define where the UI will render in Y view space"), GUILayout.Width((float)Screen.width / 4));
                         yPos.floatValue = EditorGUILayout.FloatField(yPos.floatValue);
                     }
 
-                    using (new EditorGUILayout.HorizontalScope()) //Horizontal Formatting
+                    using (new EditorGUILayout.HorizontalScope())
                     {
                         EditorGUILayout.LabelField(new GUIContent("Distance", "Define the simulated distance from the view"), GUILayout.Width((float)Screen.width / 4));
                         distance.floatValue = EditorGUILayout.FloatField(distance.floatValue);
                     }
                 }
             }
+
+            #endregion
+
+            #region Toggle UI Elements
 
             if (Mathf.Approximately(flipOrder.floatValue, 0))
             {
@@ -238,11 +256,11 @@ public class ToggleHUDEditor : ShaderGUI
 
                 EditorGUI.BeginChangeCheck();
 
-                using (new EditorGUILayout.VerticalScope("HelpBox")) //Vertical Formatting
+                using (new EditorGUILayout.VerticalScope("HelpBox"))
                 {
                     EditorGUILayout.LabelField(new GUIContent("Toggle UI Elements", "Toggle the display of each UI icon using the checkboxes below"), GUILayout.Width((float)Screen.width / 2));
 
-                    EditorGUILayout.Space(); //add space
+                    EditorGUILayout.Space();
 
                     if (Mathf.Approximately(flipHor.floatValue, 0) && Mathf.Approximately(flipVer.floatValue, 0))
                         for (var i = (int)rows.floatValue - 1; i >= 0; i--)
@@ -327,13 +345,13 @@ public class ToggleHUDEditor : ShaderGUI
 
                 EditorGUI.BeginChangeCheck();
 
-                using (new EditorGUILayout.VerticalScope("HelpBox")) //Vertical Formatting
+                using (new EditorGUILayout.VerticalScope("HelpBox"))
                 {
                     EditorGUILayout.LabelField(new GUIContent("Toggle UI Elements", "Toggle the display of each UI icon using the checkboxes below"), GUILayout.Width((float)Screen.width / 2));
 
-                    EditorGUILayout.Space(); //add space
+                    EditorGUILayout.Space();
 
-                    using (new EditorGUILayout.HorizontalScope()) //Vertical Formatting
+                    using (new EditorGUILayout.HorizontalScope())
                     {
                         if (Mathf.Approximately(flipHor.floatValue, 0) && Mathf.Approximately(flipVer.floatValue, 0))
                             for (var i = 0; i < columns.floatValue; i++)
@@ -402,28 +420,29 @@ public class ToggleHUDEditor : ShaderGUI
                     }
                 }
             }
+
+            #endregion
         }
 
-        EditorGUILayout.Space(); //add space
-        EditorGUILayout.Space(); //add space
+        EditorGUILayout.Space();
+        EditorGUILayout.Space();
 
         materialEditor.RenderQueueField();
 
         #region Credits
 
-        EditorGUILayout.LabelField("", GUI.skin.horizontalSlider); // Horizontal Line Divider
+        EditorGUILayout.LabelField("", GUI.skin.horizontalSlider);
 
-        //Credits GUI
-        using (new EditorGUILayout.HorizontalScope(GUILayout.Height(35))) //Horizontal Formatting
+        using (new EditorGUILayout.HorizontalScope(GUILayout.Height(35)))
         {
-            GUILayout.FlexibleSpace(); // Fill Space to Right Align
+            GUILayout.FlexibleSpace();
 
             JSCredits("Quantum");
         }
 
-        using (new EditorGUILayout.HorizontalScope(GUILayout.Height(35))) //Horizontal Formatting
+        using (new EditorGUILayout.HorizontalScope(GUILayout.Height(35)))
         {
-            GUILayout.FlexibleSpace(); // Fill Space to Right Align
+            GUILayout.FlexibleSpace();
 
             JSCredits("JustSleightly");
         }
@@ -433,7 +452,7 @@ public class ToggleHUDEditor : ShaderGUI
 
     #region DownloadSampleUIGrid
 
-    //Method to download a texture via web request and store in memory
+    //Method to Download a Texture via Web Request and Store in Memory
     private class TextureDownloader
     {
         public Texture2D Texture;
@@ -474,30 +493,25 @@ public class ToggleHUDEditor : ShaderGUI
             _iconStore = _iconStoreDownloader.Texture;
     }
 
-    //Method to download and display credits
+    //Method to Download and Display Credits
     private static void JSCredits(string person)
     {
-        //Create GUI Style for Name
         var creditsLabel = new GUIStyle(GUI.skin.label) { alignment = TextAnchor.MiddleRight, fixedHeight = 35, richText = true };
 
         switch (person)
         {
             case "JustSleightly":
             {
-                //Name Label
                 EditorGUILayout.LabelField("<size=14><i><b><color=#ff6961>JustSleightly#0001</color></b></i></size>", creditsLabel, GUILayout.ExpandWidth(false), GUILayout.MaxWidth(135));
 
-                //JSLogo Icon
                 if (_iconJSLogo != null)
                     if (GUILayout.Button(new GUIContent(_iconJSLogo) { tooltip = "JustSleightly" }, "label", GUILayout.Width(35), GUILayout.Height(35)))
                         Application.OpenURL("https://vrc.sleightly.dev/");
 
-                //Discord Icon
                 if (_iconDiscord != null)
                     if (GUILayout.Button(new GUIContent(_iconDiscord) { tooltip = "JustSleightly's Discord" }, "label", GUILayout.Width(35), GUILayout.Height(35)))
                         Application.OpenURL("https://discord.sleightly.dev/");
 
-                //Store Icon
                 if (_iconStore != null)
                     if (GUILayout.Button(new GUIContent(_iconStore) { tooltip = "Store" }, "label", GUILayout.Width(35), GUILayout.Height(35)))
                         Application.OpenURL("https://store.sleightly.dev/");
@@ -505,15 +519,12 @@ public class ToggleHUDEditor : ShaderGUI
             }
             case "Quantum":
             {
-                //Name Label
                 EditorGUILayout.LabelField("<size=14><i><b><color=#ff6961>Quantum#0846</color></b></i></size>", creditsLabel, GUILayout.ExpandWidth(false), GUILayout.MaxWidth(135));
 
-                //Discord Icon
                 if (_iconDiscord != null)
                     if (GUILayout.Button(new GUIContent(_iconDiscord) { tooltip = "Quantum's Discord" }, "label", GUILayout.Width(35), GUILayout.Height(35)))
                         Application.OpenURL("https://quantum.sleightly.dev/");
 
-                //GitHub Icon
                 if (_iconGithub != null)
                     if (GUILayout.Button(new GUIContent(_iconGithub) { tooltip = "GitHub" }, "label", GUILayout.Width(35), GUILayout.Height(35)))
                         Application.OpenURL("https://github.sleightly.dev/togglehud");
