@@ -95,13 +95,10 @@ public class ToggleHUDEditor : ShaderGUI
                 buttonUIGridTexture.tooltip = "Sample UI Texture Sheet";
 
                 if (GUILayout.Button(buttonUIGridTexture, "label", GUILayout.Width(150), GUILayout.Height(150)))
-                {
                     Application.OpenURL("https://github.com/JustSleightly/ToggleHUD/tree/main/Sample/Textures");
-                }
 
                 GUILayout.FlexibleSpace();
             }
-
             EditorGUILayout.Space(); //add space
         }
         else
@@ -144,9 +141,7 @@ public class ToggleHUDEditor : ShaderGUI
                                 Debug.LogWarning("[ToggleHUD] Rows multiplied by Columns cannot be greater than 16");
                             }
                             else
-                            {
                                 rows.floatValue = Mathf.RoundToInt(rows.floatValue);
-                            }
                         }
                     }
 
@@ -171,9 +166,7 @@ public class ToggleHUDEditor : ShaderGUI
                                 Debug.LogWarning("[ToggleHUD] Rows multiplied by Columns cannot be greater than 16");
                             }
                             else
-                            {
                                 columns.floatValue = Mathf.RoundToInt(columns.floatValue);
-                            }
                         }
                     }
                 }
@@ -261,7 +254,6 @@ public class ToggleHUDEditor : ShaderGUI
                                 toggles[i, j] = EditorGUILayout.ToggleLeft(new GUIContent(togglevalues[i, j].ToString() + " - " + (toggles[i, j] ? "On " : "Off"), "Toggles this UI " + (toggles[i, j] ? "Off " : "On")), toggles[i, j], GUILayout.Width(70));
                                 EditorGUILayout.EndVertical();
                             }
-
                             EditorGUILayout.EndHorizontal();
                         }
                     }
@@ -276,7 +268,6 @@ public class ToggleHUDEditor : ShaderGUI
                                 toggles[i, j] = EditorGUILayout.ToggleLeft(new GUIContent(togglevalues[i, j].ToString() + " - " + (toggles[i, j] ? "On " : "Off"), "Toggles this UI " + (toggles[i, j] ? "Off " : "On")), toggles[i, j], GUILayout.Width(70));
                                 EditorGUILayout.EndVertical();
                             }
-
                             EditorGUILayout.EndHorizontal();
                         }
                     }
@@ -291,7 +282,6 @@ public class ToggleHUDEditor : ShaderGUI
                                 toggles[i, j] = EditorGUILayout.ToggleLeft(new GUIContent(togglevalues[i, j].ToString() + " - " + (toggles[i, j] ? "On " : "Off"), "Toggles this UI " + (toggles[i, j] ? "Off " : "On")), toggles[i, j], GUILayout.Width(70));
                                 EditorGUILayout.EndVertical();
                             }
-
                             EditorGUILayout.EndHorizontal();
                         }
                     }
@@ -306,7 +296,6 @@ public class ToggleHUDEditor : ShaderGUI
                                 toggles[i, j] = EditorGUILayout.ToggleLeft(new GUIContent(togglevalues[i, j].ToString() + " - " + (toggles[i, j] ? "On " : "Off"), "Toggles this UI " + (toggles[i, j] ? "Off " : "On")), toggles[i, j], GUILayout.Width(70));
                                 EditorGUILayout.EndVertical();
                             }
-
                             EditorGUILayout.EndHorizontal();
                         }
                     }
@@ -364,7 +353,6 @@ public class ToggleHUDEditor : ShaderGUI
                                     toggles[i, j] = EditorGUILayout.ToggleLeft(new GUIContent(togglevalues[i, j].ToString() + " - " + (toggles[i, j] ? "On " : "Off"), "Toggles this UI " + (toggles[i, j] ? "Off " : "On")), toggles[i, j], GUILayout.Width(70));
                                     EditorGUILayout.EndHorizontal();
                                 }
-
                                 EditorGUILayout.EndVertical();
                             }
                         }
@@ -379,7 +367,6 @@ public class ToggleHUDEditor : ShaderGUI
                                     toggles[i, j] = EditorGUILayout.ToggleLeft(new GUIContent(togglevalues[i, j].ToString() + " - " + (toggles[i, j] ? "On " : "Off"), "Toggles this UI " + (toggles[i, j] ? "Off " : "On")), toggles[i, j], GUILayout.Width(70));
                                     EditorGUILayout.EndHorizontal();
                                 }
-
                                 EditorGUILayout.EndVertical();
                             }
                         }
@@ -394,7 +381,6 @@ public class ToggleHUDEditor : ShaderGUI
                                     toggles[i, j] = EditorGUILayout.ToggleLeft(new GUIContent(togglevalues[i, j].ToString() + " - " + (toggles[i, j] ? "On " : "Off"), "Toggles this UI " + (toggles[i, j] ? "Off " : "On")), toggles[i, j], GUILayout.Width(70));
                                     EditorGUILayout.EndHorizontal();
                                 }
-
                                 EditorGUILayout.EndVertical();
                             }
                         }
@@ -409,7 +395,6 @@ public class ToggleHUDEditor : ShaderGUI
                                     toggles[i, j] = EditorGUILayout.ToggleLeft(new GUIContent(togglevalues[i, j].ToString() + " - " + (toggles[i, j] ? "On " : "Off"), "Toggles this UI " + (toggles[i, j] ? "Off " : "On")), toggles[i, j], GUILayout.Width(70));
                                     EditorGUILayout.EndHorizontal();
                                 }
-
                                 EditorGUILayout.EndVertical();
                             }
                         }
@@ -444,14 +429,12 @@ public class ToggleHUDEditor : ShaderGUI
         //Credits GUI
         using (new EditorGUILayout.HorizontalScope(GUILayout.Height(35))) //Horizontal Formatting
         {
-
             GUILayout.FlexibleSpace(); // Fill Space to Right Align
 
             JSCredits("Quantum");
         }
         using (new EditorGUILayout.HorizontalScope(GUILayout.Height(35))) //Horizontal Formatting
         {
-
             GUILayout.FlexibleSpace(); // Fill Space to Right Align
 
             JSCredits("JustSleightly");
@@ -476,9 +459,7 @@ public class ToggleHUDEditor : ShaderGUI
             client.SendWebRequest().completed += (asyncOperation) =>
             {
                 if (client.isNetworkError || client.isHttpError)
-                {
                     Debug.LogError(client.error);
-                }
 
                 Texture2D DownloadedIcon = new Texture2D(512, 512);
                 DownloadedIcon.LoadImage(client.downloadHandler.data);
@@ -510,10 +491,7 @@ public class ToggleHUDEditor : ShaderGUI
     private static void JSCredits(string person)
     {
         //Create GUI Style for Name
-        GUIStyle CreditsLabel = new GUIStyle(GUI.skin.label);
-        CreditsLabel.alignment = TextAnchor.MiddleRight;
-        CreditsLabel.fixedHeight = 35;
-        CreditsLabel.richText = true;
+        GUIStyle CreditsLabel = new GUIStyle(GUI.skin.label) { alignment = TextAnchor.MiddleRight, fixedHeight = 35, richText = true };
 
         if (person == "JustSleightly")
         {
@@ -522,39 +500,18 @@ public class ToggleHUDEditor : ShaderGUI
 
             //JSLogo Icon
             if (IconJSLogo != null)
-            {
-                GUIContent buttonJSLogocontent = new GUIContent(IconJSLogo);
-                buttonJSLogocontent.tooltip = "JustSleightly";
-
-                if (GUILayout.Button(buttonJSLogocontent, "label", GUILayout.Width(35), GUILayout.Height(35)))
-                {
+                if (GUILayout.Button(new GUIContent(IconJSLogo) { tooltip = "JustSleightly" }, "label", GUILayout.Width(35), GUILayout.Height(35)))
                     Application.OpenURL("https://vrc.sleightly.dev/");
-                }
-            }
 
             //Discord Icon
             if (IconDiscord != null)
-            {
-                GUIContent buttonDiscordcontent = new GUIContent(IconDiscord);
-                buttonDiscordcontent.tooltip = "JustSleightly's Discord";
-
-                if (GUILayout.Button(buttonDiscordcontent, "label", GUILayout.Width(35), GUILayout.Height(35)))
-                {
+                if (GUILayout.Button(new GUIContent(IconDiscord) { tooltip = "JustSleightly's Discord" }, "label", GUILayout.Width(35), GUILayout.Height(35)))
                     Application.OpenURL("https://discord.sleightly.dev/");
-                }
-            }
 
             //Store Icon
             if (IconStore != null)
-            {
-                GUIContent buttonStorecontent = new GUIContent(IconStore);
-                buttonStorecontent.tooltip = "Store";
-
-                if (GUILayout.Button(buttonStorecontent, "label", GUILayout.Width(35), GUILayout.Height(35)))
-                {
+                if (GUILayout.Button(new GUIContent(IconStore) { tooltip = "Store" }, "label", GUILayout.Width(35), GUILayout.Height(35)))
                     Application.OpenURL("https://store.sleightly.dev/");
-                }
-            }
         }
         else if (person == "Quantum")
         {
@@ -563,27 +520,13 @@ public class ToggleHUDEditor : ShaderGUI
 
             //Discord Icon
             if (IconDiscord != null)
-            {
-                GUIContent buttonDiscordcontent = new GUIContent(IconDiscord);
-                buttonDiscordcontent.tooltip = "Quantum's Discord";
-
-                if (GUILayout.Button(buttonDiscordcontent, "label", GUILayout.Width(35), GUILayout.Height(35)))
-                {
+                if (GUILayout.Button(new GUIContent(IconDiscord) { tooltip = "Quantum's Discord" }, "label", GUILayout.Width(35), GUILayout.Height(35)))
                     Application.OpenURL("https://quantum.sleightly.dev/");
-                }
-            }
 
             //GitHub Icon
             if (IconGithub != null)
-            {
-                GUIContent buttonGitHubcontent = new GUIContent(IconGithub);
-                buttonGitHubcontent.tooltip = "GitHub";
-
-                if (GUILayout.Button(buttonGitHubcontent, "label", GUILayout.Width(35), GUILayout.Height(35)))
-                {
+                if (GUILayout.Button(new GUIContent(IconGithub) { tooltip = "GitHub" }, "label", GUILayout.Width(35), GUILayout.Height(35)))
                     Application.OpenURL("https://github.sleightly.dev/togglehud");
-                }
-            }
         }
     }
 
