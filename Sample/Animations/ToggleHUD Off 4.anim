@@ -42,7 +42,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: material._Toggle_3
-    path: Anchor/UI.Object
+    path: ToggleHUD/UI.Object
     classID: 23
     script: {fileID: 0}
   m_PPtrCurves: []
@@ -54,7 +54,7 @@ AnimationClip:
   m_ClipBindingConstant:
     genericBindings:
     - serializedVersion: 2
-      path: 2854486584
+      path: 4028883406
       attribute: 2223812219
       script: {fileID: 0}
       typeID: 23
@@ -107,7 +107,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: material._Toggle_3
-    path: Anchor/UI.Object
+    path: ToggleHUD/UI.Object
     classID: 23
     script: {fileID: 0}
   m_EulerEditorCurves: []

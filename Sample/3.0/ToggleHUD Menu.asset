@@ -18,7 +18,7 @@ MonoBehaviour:
     type: 103
     parameter:
       name: 
-    value: 1
+    value: 0
     style: 0
     subMenu: {fileID: 11400000, guid: c64865afc45b95240997857490b1719d, type: 2}
     subParameters: []
@@ -28,9 +28,19 @@ MonoBehaviour:
     type: 103
     parameter:
       name: 
-    value: 1
+    value: 0
     style: 0
     subMenu: {fileID: 11400000, guid: 2a82c3eb11879f54ea0d2c82e902848a, type: 2}
+    subParameters: []
+    labels: []
+  - name: ToggleHUD Settings
+    icon: {fileID: 0}
+    type: 103
+    parameter:
+      name: 
+    value: 0
+    style: 0
+    subMenu: {fileID: 11400000, guid: 7c348d5e9f759424cbc74ca3b05e4412, type: 2}
     subParameters: []
     labels: []
   - name: ToggleHUD DIsplay

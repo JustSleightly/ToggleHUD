@@ -15,69 +15,97 @@ MonoBehaviour:
   parameters:
   - name: ToggleHUD/Display
     valueType: 2
-    saved: 0
+    saved: 1
     defaultValue: 1
   - name: ToggleHUD/1
     valueType: 2
-    saved: 0
-    defaultValue: 0
+    saved: 1
+    defaultValue: 1
   - name: ToggleHUD/2
     valueType: 2
-    saved: 0
-    defaultValue: 0
+    saved: 1
+    defaultValue: 1
   - name: ToggleHUD/3
     valueType: 2
-    saved: 0
-    defaultValue: 0
+    saved: 1
+    defaultValue: 1
   - name: ToggleHUD/4
     valueType: 2
-    saved: 0
-    defaultValue: 0
+    saved: 1
+    defaultValue: 1
   - name: ToggleHUD/5
     valueType: 2
-    saved: 0
-    defaultValue: 0
+    saved: 1
+    defaultValue: 1
   - name: ToggleHUD/6
     valueType: 2
-    saved: 0
-    defaultValue: 0
+    saved: 1
+    defaultValue: 1
   - name: ToggleHUD/7
     valueType: 2
-    saved: 0
-    defaultValue: 0
+    saved: 1
+    defaultValue: 1
   - name: ToggleHUD/8
     valueType: 2
-    saved: 0
-    defaultValue: 0
+    saved: 1
+    defaultValue: 1
   - name: ToggleHUD/9
     valueType: 2
-    saved: 0
-    defaultValue: 0
+    saved: 1
+    defaultValue: 1
   - name: ToggleHUD/10
     valueType: 2
-    saved: 0
-    defaultValue: 0
+    saved: 1
+    defaultValue: 1
   - name: ToggleHUD/11
     valueType: 2
-    saved: 0
-    defaultValue: 0
+    saved: 1
+    defaultValue: 1
   - name: ToggleHUD/12
     valueType: 2
-    saved: 0
-    defaultValue: 0
+    saved: 1
+    defaultValue: 1
   - name: ToggleHUD/13
     valueType: 2
-    saved: 0
-    defaultValue: 0
+    saved: 1
+    defaultValue: 1
   - name: ToggleHUD/14
     valueType: 2
-    saved: 0
-    defaultValue: 0
+    saved: 1
+    defaultValue: 1
   - name: ToggleHUD/15
     valueType: 2
-    saved: 0
-    defaultValue: 0
+    saved: 1
+    defaultValue: 1
   - name: ToggleHUD/16
     valueType: 2
-    saved: 0
-    defaultValue: 0
+    saved: 1
+    defaultValue: 1
+  - name: ToggleHUD/Rows
+    valueType: 0
+    saved: 1
+    defaultValue: 3
+  - name: ToggleHUD/Columns
+    valueType: 0
+    saved: 1
+    defaultValue: 3
+  - name: ToggleHUD/Width
+    valueType: 1
+    saved: 1
+    defaultValue: 0.3
+  - name: ToggleHUD/Height
+    valueType: 1
+    saved: 1
+    defaultValue: 0.3
+  - name: ToggleHUD/XPos
+    valueType: 1
+    saved: 1
+    defaultValue: 0.65
+  - name: ToggleHUD/YPos
+    valueType: 1
+    saved: 1
+    defaultValue: 0.7
+  - name: ToggleHUD/Distance
+    valueType: 1
+    saved: 1
+    defaultValue: 0.5
