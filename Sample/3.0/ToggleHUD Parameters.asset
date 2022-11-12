@@ -84,28 +84,28 @@ MonoBehaviour:
   - name: ToggleHUD/Rows
     valueType: 0
     saved: 1
-    defaultValue: 3
+    defaultValue: 2
   - name: ToggleHUD/Columns
     valueType: 0
     saved: 1
-    defaultValue: 3
+    defaultValue: 4
   - name: ToggleHUD/Width
     valueType: 1
     saved: 1
-    defaultValue: 0.3
+    defaultValue: 0.2
   - name: ToggleHUD/Height
     valueType: 1
     saved: 1
-    defaultValue: 0.3
+    defaultValue: 0.2
   - name: ToggleHUD/XPos
     valueType: 1
     saved: 1
-    defaultValue: 0.65
+    defaultValue: 0.6095
   - name: ToggleHUD/YPos
     valueType: 1
     saved: 1
-    defaultValue: 0.7
+    defaultValue: 0.775
   - name: ToggleHUD/Distance
     valueType: 1
     saved: 1
-    defaultValue: 0.5
+    defaultValue: 0.4663

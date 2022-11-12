@@ -4,7 +4,7 @@ Shader and Functional Design - Quantum#0846
 https://quantum.sleightly.dev/
 https://github.com/Link250/
 
-ShaderGUI Editor and Project Manager - JustSleightly#0001
+ShaderGUI Editor and Project Design - JustSleightly#0001
 https://discord.sleightly.dev/
 https://github.sleightly.dev/
 https://store.sleightly.dev/

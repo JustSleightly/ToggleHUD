@@ -1,12 +1,12 @@
 ﻿Shader "Quantum/JustSleightly/ToggleHUD"{
    Properties{
        _MainTex("Texture", 2D) = "white" {}
-       [HDR]_UIColor("UI Color", Color) = (1,1,1,1)
+       [HDR]_UIColor("UI Color", Color) = (1,1,1,0.70588)
        _RotX("X Position", Float) = 0.0
        _RotY("Y Position", Float) = 0.0
        _Dist("Distance", Float) = 1.0
-       _Width("Width", Float) = 6.0
-       _Height("Height", Float) = 6.0
+       _Width("Width", Float) = 4.0
+       _Height("Height", Float) = 4.0
        _Rows("Rows", Int) = 4
        _Columns("Columns", Int) = 4
        [Toggle(FLIP_HORIZONTAL)] _FlipHorizontal("Flip Horizontal Order", Float) = 0.0

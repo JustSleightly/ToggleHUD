@@ -60,14 +60,14 @@ Material:
     - _Columns: 5
     - _Cutoff: 0.5
     - _DetailNormalMapScale: 1
-    - _Dist: 1
+    - _Dist: 1.19945
     - _DstBlend: 0
     - _FlipHorizontal: 1
     - _FlipVertical: 0
     - _GlossMapScale: 1
     - _Glossiness: 0.5
     - _GlossyReflections: 1
-    - _Height: 6
+    - _Height: 4
     - _Metallic: 0
     - _Mode: 0
     - _OcclusionStrength: 1
@@ -76,8 +76,8 @@ Material:
     - _Parallax: 0.02
     - _PosZ: 1
     - _Precision: 10
-    - _RotX: 15
-    - _RotY: 16
+    - _RotX: 10.949999
+    - _RotY: 21.999998
     - _Rows: 3
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
@@ -99,7 +99,7 @@ Material:
     - _Toggle_8: 1
     - _Toggle_9: 1
     - _UVSec: 0
-    - _Width: 6
+    - _Width: 4
     - _ZWrite: 1
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}

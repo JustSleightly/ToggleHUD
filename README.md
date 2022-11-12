@@ -228,4 +228,4 @@ If you used the sample prefab, be sure to also include the sample mesh/material 
 
 Shader and Functional Design - Quantum#0846
 
-ShaderGUI Editor and Project Manager - JustSleightly#0001
+ShaderGUI Editor and Project Design - JustSleightly#0001
