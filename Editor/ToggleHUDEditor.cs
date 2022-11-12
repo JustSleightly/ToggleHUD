@@ -1,5 +1,6 @@
 ﻿#if UNITY_EDITOR
 using UnityEditor;
+using UnityEditor.AnimatedValues;
 using UnityEngine;
 using UnityEngine.Networking;
 
@@ -17,6 +18,13 @@ public class ToggleHUDEditor : ShaderGUI
     private static TextureDownloader _iconDiscordDownloader;
     private static TextureDownloader _iconGithubDownloader;
     private static TextureDownloader _iconStoreDownloader;
+    private AnimBool testValueConverter = new AnimBool();
+    private AnimBool errorValueTypes = new AnimBool();
+    private string testWidth = string.Empty;
+    private string testHeight = string.Empty;
+    private string testXPos = string.Empty;
+    private string testYPos = string.Empty;
+    private string testDistance = string.Empty;
 
     public ToggleHUDEditor()
     {
@@ -260,8 +268,6 @@ public class ToggleHUDEditor : ShaderGUI
                 {
                     EditorGUILayout.LabelField(new GUIContent("Toggle UI Elements", "Toggle the display of each UI icon using the checkboxes below"), GUILayout.Width((float)Screen.width / 2));
 
-                    EditorGUILayout.Space();
-
                     if (Mathf.Approximately(flipHor.floatValue, 0) && Mathf.Approximately(flipVer.floatValue, 0))
                         for (var i = (int)rows.floatValue - 1; i >= 0; i--)
                         {
@@ -422,6 +428,108 @@ public class ToggleHUDEditor : ShaderGUI
             }
 
             #endregion
+
+            #region Test Value Converter
+
+            using (new EditorGUILayout.VerticalScope())
+            {
+                using (new EditorGUILayout.HorizontalScope("HelpBox"))
+                {
+                    EditorGUILayout.LabelField(new GUIContent("Anim Value Converter ", "If you've obtained values you'd like to convert from the ToggleHUD prefab tester, please enter them here."), GUILayout.Width(140), GUILayout.ExpandWidth(false));
+
+                    testValueConverter.target = EditorGUILayout.Foldout(testValueConverter.target, "", true);
+
+                    GUILayout.FlexibleSpace();
+                }
+
+                if (EditorGUILayout.BeginFadeGroup(testValueConverter.faded))
+                {
+                    EditorGUIUtility.labelWidth = 100;
+                    using (new EditorGUILayout.VerticalScope("HelpBox"))
+                    {
+                        testWidth = EditorGUILayout.TextField("Width", testWidth);
+                        testHeight = EditorGUILayout.TextField("Height", testHeight);
+                    }
+
+                    using (new EditorGUILayout.VerticalScope("HelpBox"))
+                    {
+                        testXPos = EditorGUILayout.TextField("XPos", testXPos);
+                        testYPos = EditorGUILayout.TextField("YPos", testYPos);
+                        testDistance = EditorGUILayout.TextField("Distance", testDistance);
+                    }
+
+                    EditorGUIUtility.labelWidth = 0;
+
+                    float convertWidth, convertHeight, convertXPos, convertYPos, convertDistance;
+
+                    bool errorWidth = float.TryParse(testWidth, out convertWidth) || string.IsNullOrWhiteSpace(testWidth);
+                    bool errorHeight = float.TryParse(testHeight, out convertHeight) || string.IsNullOrWhiteSpace(testHeight);
+                    bool errorXPos = float.TryParse(testXPos, out convertXPos) || string.IsNullOrWhiteSpace(testXPos);
+                    bool errorYPos = float.TryParse(testYPos, out convertYPos) || string.IsNullOrWhiteSpace(testYPos);
+                    bool errorDistance = float.TryParse(testDistance, out convertDistance) || string.IsNullOrWhiteSpace(testDistance);
+
+                    errorValueTypes.target = !(errorWidth && errorHeight && errorXPos && errorYPos && errorDistance);
+
+                    if (EditorGUILayout.BeginFadeGroup(errorValueTypes.faded))
+                    {
+                        using (new EditorGUILayout.VerticalScope("HelpBox"))
+                        {
+                            EditorGUILayout.HelpBox("Please input valid numbers in order to convert!", MessageType.Error);
+                        }
+                    }
+
+                    EditorGUILayout.EndFadeGroup();
+
+                    void ConvertTester(MaterialEditor editor, MaterialProperty property, string test, float convert, string undo)
+                    {
+                        if (!string.IsNullOrWhiteSpace(test) && float.TryParse(test, out convert))
+                        {
+                            float newValue = 0;
+
+                            switch (undo)
+                            {
+                                case "Width":
+                                    newValue = convert * 20;
+                                    break;
+                                case "Height":
+                                    newValue = convert * 20;
+                                    break;
+                                case "X Position":
+                                    newValue = (convert - 0.5f) * 100;
+                                    break;
+                                case "Y Position":
+                                    newValue = (convert - 0.5f) * 80;
+                                    break;
+                                case "Distance":
+                                    newValue = convert * 100 * 0.015f + 0.5f;
+                                    break;
+                                default:
+                                    Debug.LogError("<color=yellow>[ToggleHUD]</color> Property Not Found");
+                                    break;
+                            }
+
+                            property.floatValue = newValue;
+                            Undo.RecordObject(editor.target, $"Convert {undo}");
+                        }
+                    }
+
+                    EditorGUI.BeginDisabledGroup(errorValueTypes.value);
+                    if (GUILayout.Button("Convert"))
+                    {
+                        ConvertTester(materialEditor, width, testWidth, convertWidth, "Width");
+                        ConvertTester(materialEditor, height, testHeight, convertHeight, "Height");
+                        ConvertTester(materialEditor, xPos, testXPos, convertXPos, "X Position");
+                        ConvertTester(materialEditor, yPos, testYPos, convertYPos, "Y Position");
+                        ConvertTester(materialEditor, distance, testDistance, convertDistance, "Distance");
+                    }
+
+                    EditorGUI.EndDisabledGroup();
+                }
+
+                EditorGUILayout.EndFadeGroup();
+            }
+
+            #endregion
         }
 
         EditorGUILayout.Space();
@@ -532,6 +640,7 @@ public class ToggleHUDEditor : ShaderGUI
             }
         }
     }
+
     #endregion
 }
 #endif
