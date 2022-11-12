@@ -6,46 +6,6 @@ using UnityEngine.Networking;
 
 public class ToggleHUDEditor : ShaderGUI
 {
-    #region Declare/Download Icons
-
-    private static Texture2D _uiGridTexture;
-    private static Texture2D _iconJSLogo;
-    private static Texture2D _iconDiscord;
-    private static Texture2D _iconGithub;
-    private static Texture2D _iconStore;
-    private static TextureDownloader _uiGridTextureDownloader;
-    private static TextureDownloader _iconJSLogoDownloader;
-    private static TextureDownloader _iconDiscordDownloader;
-    private static TextureDownloader _iconGithubDownloader;
-    private static TextureDownloader _iconStoreDownloader;
-    private AnimBool testValueConverter = new AnimBool();
-    private AnimBool errorValueTypes = new AnimBool();
-    private string testWidth = string.Empty;
-    private string testHeight = string.Empty;
-    private string testXPos = string.Empty;
-    private string testYPos = string.Empty;
-    private string testDistance = string.Empty;
-
-    public ToggleHUDEditor()
-    {
-        if (_uiGridTextureDownloader == null)
-            _uiGridTextureDownloader = new TextureDownloader("https://raw.githubusercontent.com/JustSleightly/ToggleHUD/main/Sample/Textures/UI%20Grid%20Numbered.png");
-
-        if (_iconJSLogoDownloader == null)
-            _iconJSLogoDownloader = new TextureDownloader("https://github.com/JustSleightly/Resources/raw/main/Icons/JSLogo.png");
-
-        if (_iconDiscordDownloader == null)
-            _iconDiscordDownloader = new TextureDownloader("https://github.com/JustSleightly/Resources/raw/main/Icons/Discord.png");
-
-        if (_iconGithubDownloader == null)
-            _iconGithubDownloader = new TextureDownloader("https://github.com/JustSleightly/Resources/raw/main/Icons/GitHub.png");
-
-        if (_iconStoreDownloader == null)
-            _iconStoreDownloader = new TextureDownloader("https://github.com/JustSleightly/Resources/raw/main/Icons/Store.png");
-    }
-
-    #endregion
-
     public override void OnGUI(MaterialEditor materialEditor, MaterialProperty[] properties)
     {
         InitializeTextures();
@@ -437,52 +397,48 @@ public class ToggleHUDEditor : ShaderGUI
                 {
                     EditorGUILayout.LabelField(new GUIContent("Anim Value Converter ", "If you've obtained values you'd like to convert from the ToggleHUD prefab tester, please enter them here."), GUILayout.Width(140), GUILayout.ExpandWidth(false));
 
-                    testValueConverter.target = EditorGUILayout.Foldout(testValueConverter.target, "", true);
+                    _testValueConverter.target = EditorGUILayout.Foldout(_testValueConverter.target, "", true);
 
                     GUILayout.FlexibleSpace();
                 }
 
-                if (EditorGUILayout.BeginFadeGroup(testValueConverter.faded))
+                if (EditorGUILayout.BeginFadeGroup(_testValueConverter.faded))
                 {
                     EditorGUIUtility.labelWidth = 100;
                     using (new EditorGUILayout.VerticalScope("HelpBox"))
                     {
-                        testWidth = EditorGUILayout.TextField("Width", testWidth);
-                        testHeight = EditorGUILayout.TextField("Height", testHeight);
+                        _testWidth = EditorGUILayout.TextField("Width", _testWidth);
+                        _testHeight = EditorGUILayout.TextField("Height", _testHeight);
                     }
 
                     using (new EditorGUILayout.VerticalScope("HelpBox"))
                     {
-                        testXPos = EditorGUILayout.TextField("XPos", testXPos);
-                        testYPos = EditorGUILayout.TextField("YPos", testYPos);
-                        testDistance = EditorGUILayout.TextField("Distance", testDistance);
+                        _testXPos = EditorGUILayout.TextField("XPos", _testXPos);
+                        _testYPos = EditorGUILayout.TextField("YPos", _testYPos);
+                        _testDistance = EditorGUILayout.TextField("Distance", _testDistance);
                     }
 
                     EditorGUIUtility.labelWidth = 0;
 
-                    float convertWidth, convertHeight, convertXPos, convertYPos, convertDistance;
+                    var errorWidth = float.TryParse(_testWidth, out _) || string.IsNullOrWhiteSpace(_testWidth);
+                    var errorHeight = float.TryParse(_testHeight, out _) || string.IsNullOrWhiteSpace(_testHeight);
+                    var errorXPos = float.TryParse(_testXPos, out _) || string.IsNullOrWhiteSpace(_testXPos);
+                    var errorYPos = float.TryParse(_testYPos, out _) || string.IsNullOrWhiteSpace(_testYPos);
+                    var errorDistance = float.TryParse(_testDistance, out _) || string.IsNullOrWhiteSpace(_testDistance);
 
-                    bool errorWidth = float.TryParse(testWidth, out convertWidth) || string.IsNullOrWhiteSpace(testWidth);
-                    bool errorHeight = float.TryParse(testHeight, out convertHeight) || string.IsNullOrWhiteSpace(testHeight);
-                    bool errorXPos = float.TryParse(testXPos, out convertXPos) || string.IsNullOrWhiteSpace(testXPos);
-                    bool errorYPos = float.TryParse(testYPos, out convertYPos) || string.IsNullOrWhiteSpace(testYPos);
-                    bool errorDistance = float.TryParse(testDistance, out convertDistance) || string.IsNullOrWhiteSpace(testDistance);
+                    _errorValueTypes.target = !(errorWidth && errorHeight && errorXPos && errorYPos && errorDistance);
 
-                    errorValueTypes.target = !(errorWidth && errorHeight && errorXPos && errorYPos && errorDistance);
-
-                    if (EditorGUILayout.BeginFadeGroup(errorValueTypes.faded))
-                    {
+                    if (EditorGUILayout.BeginFadeGroup(_errorValueTypes.faded))
                         using (new EditorGUILayout.VerticalScope("HelpBox"))
                         {
                             EditorGUILayout.HelpBox("Please input valid numbers in order to convert!", MessageType.Error);
                         }
-                    }
 
                     EditorGUILayout.EndFadeGroup();
 
-                    void ConvertTester(MaterialEditor editor, MaterialProperty property, string test, float convert, string undo)
+                    void ConvertTester(MaterialEditor editor, MaterialProperty property, string test, string undo)
                     {
-                        if (!string.IsNullOrWhiteSpace(test) && float.TryParse(test, out convert))
+                        if (!string.IsNullOrWhiteSpace(test) && float.TryParse(test, out var convert))
                         {
                             float newValue = 0;
 
@@ -513,14 +469,14 @@ public class ToggleHUDEditor : ShaderGUI
                         }
                     }
 
-                    EditorGUI.BeginDisabledGroup(errorValueTypes.value);
+                    EditorGUI.BeginDisabledGroup(_errorValueTypes.value);
                     if (GUILayout.Button("Convert"))
                     {
-                        ConvertTester(materialEditor, width, testWidth, convertWidth, "Width");
-                        ConvertTester(materialEditor, height, testHeight, convertHeight, "Height");
-                        ConvertTester(materialEditor, xPos, testXPos, convertXPos, "X Position");
-                        ConvertTester(materialEditor, yPos, testYPos, convertYPos, "Y Position");
-                        ConvertTester(materialEditor, distance, testDistance, convertDistance, "Distance");
+                        ConvertTester(materialEditor, width, _testWidth, "Width");
+                        ConvertTester(materialEditor, height, _testHeight, "Height");
+                        ConvertTester(materialEditor, xPos, _testXPos, "X Position");
+                        ConvertTester(materialEditor, yPos, _testYPos, "Y Position");
+                        ConvertTester(materialEditor, distance, _testDistance, "Distance");
                     }
 
                     EditorGUI.EndDisabledGroup();
@@ -557,6 +513,46 @@ public class ToggleHUDEditor : ShaderGUI
 
         #endregion
     }
+
+    #region Declare/Download Icons
+
+    private static Texture2D _uiGridTexture;
+    private static Texture2D _iconJSLogo;
+    private static Texture2D _iconDiscord;
+    private static Texture2D _iconGithub;
+    private static Texture2D _iconStore;
+    private static TextureDownloader _uiGridTextureDownloader;
+    private static TextureDownloader _iconJSLogoDownloader;
+    private static TextureDownloader _iconDiscordDownloader;
+    private static TextureDownloader _iconGithubDownloader;
+    private static TextureDownloader _iconStoreDownloader;
+    private readonly AnimBool _testValueConverter = new AnimBool();
+    private readonly AnimBool _errorValueTypes = new AnimBool();
+    private string _testWidth = string.Empty;
+    private string _testHeight = string.Empty;
+    private string _testXPos = string.Empty;
+    private string _testYPos = string.Empty;
+    private string _testDistance = string.Empty;
+
+    public ToggleHUDEditor()
+    {
+        if (_uiGridTextureDownloader == null)
+            _uiGridTextureDownloader = new TextureDownloader("https://raw.githubusercontent.com/JustSleightly/ToggleHUD/main/Sample/Textures/UI%20Grid%20Numbered.png");
+
+        if (_iconJSLogoDownloader == null)
+            _iconJSLogoDownloader = new TextureDownloader("https://github.com/JustSleightly/Resources/raw/main/Icons/JSLogo.png");
+
+        if (_iconDiscordDownloader == null)
+            _iconDiscordDownloader = new TextureDownloader("https://github.com/JustSleightly/Resources/raw/main/Icons/Discord.png");
+
+        if (_iconGithubDownloader == null)
+            _iconGithubDownloader = new TextureDownloader("https://github.com/JustSleightly/Resources/raw/main/Icons/GitHub.png");
+
+        if (_iconStoreDownloader == null)
+            _iconStoreDownloader = new TextureDownloader("https://github.com/JustSleightly/Resources/raw/main/Icons/Store.png");
+    }
+
+    #endregion
 
     #region DownloadSampleUIGrid
 
