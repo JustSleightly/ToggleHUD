@@ -205,16 +205,16 @@ Sample animator controller and VRC 3.0 Menu/Parameters files are included for yo
 
 This may end up being a lot of guess and check depending on your preferred rows/columns and width/height.
 
-Personally, I often use ToggleHUD in a 3 Row 5 Column layout with a Width/Height of 4, and I've found the following values to be the best for me: 
+Personally, I often use ToggleHUD in a 3 Row 5 Column layout with a Width/Height of 4, and I've found the following values to be the best for me. A examples of how they look can be found [here](https://github.com/JustSleightly/ToggleHUD/tree/main/Documentation/Images/Positioning%20Examples).
 
 | HUD Position | Flip Hor | Flip Ver | X Position | Y Position | Distance |
 | --- | --- | --- | --- | --- | --- |
-| Top Left | ❌ | ✅ | -14.6 | -9.82 | 1.19945 |
-| Top Center | ❔ | ✅ | 0 | -9.82 | 1.16141 |
-| Top Right | ❌ | ✅ | 10.95 | -9.82 | 1.19945 |
-| Bottom Left | ❌ | ❌ | -14.6 | 25.6 | 1.19945 |
-| Bottom Center | ❔ | ❌ | 0 | 22 | 1.16141 |
-| Bottom Right | ✅ | ❌ | 10.95 | 22 | 1.19945 |
+| Upper Left | ❌ | ✅ | -14.6 | -9.82 | 1.19945 |
+| Upper Center | ❔ | ✅ | 0 | -9.82 | 1.16141 |
+| Upper Right | ❌ | ✅ | 10.95 | -9.82 | 1.19945 |
+| Lower Left | ❌ | ❌ | -14.6 | 25.6 | 1.19945 |
+| Lower Center | ❔ | ❌ | 0 | 22 | 1.16141 |
+| Lower Right | ✅ | ❌ | 10.95 | 22 | 1.19945 |
 
 **If you are implementing ToggleHUD into your VRChat Avatar**, you can use the sample prefab, animator controller, VRC expressions menu, and VRC expression parameters file to help position!
 
