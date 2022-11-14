@@ -537,7 +537,7 @@ public class ToggleHUDEditor : ShaderGUI
     public ToggleHUDEditor()
     {
         if (_uiGridTextureDownloader == null)
-            _uiGridTextureDownloader = new TextureDownloader("https://raw.githubusercontent.com/JustSleightly/ToggleHUD/main/Sample/Textures/UI%20Grid%20Numbered.png");
+            _uiGridTextureDownloader = new TextureDownloader("https://raw.githubusercontent.com/JustSleightly/ToggleHUD/main/Documentation/Images/UI%20Grid%20Numbered%20Shadowed.png");
 
         if (_iconJSLogoDownloader == null)
             _iconJSLogoDownloader = new TextureDownloader("https://github.com/JustSleightly/Resources/raw/main/Icons/JSLogo.png");
