@@ -218,7 +218,9 @@ Personally, I often use ToggleHUD in a 3 Row 5 Column layout with a Width/Height
 
 **If you are implementing ToggleHUD into your VRChat Avatar**, you can use the sample prefab, animator controller, VRC expressions menu, and VRC expression parameters file to help position!
 
-It features in-game toggle-able options and radial puppets for modifying all material properties in-game, which you can then plug into the [Anim Value Converter](https://github.com/JustSleightly/ToggleHUD#material-settings) to instantly convert and set your material properties to match in Unity!
+It features in-game toggle-able options and radial puppets for modifying all material properties in-game, which you can then plug into the [Anim Value Converter](https://github.com/JustSleightly/ToggleHUD#material-settings) to instantly convert and set your material properties to match in Unity! 
+
+[<img src="https://github.com/JustSleightly/ToggleHUD/raw/main/Documentation/Gifs/ToggleHUD%20Tester.gif" height="325">](https://github.com/JustSleightly/ToggleHUD/tree/main/Sample/Textures/ "Sample UI Textures")
 
 ######
 
