@@ -211,7 +211,7 @@ Personally, I often use ToggleHUD in a 3 Row 5 Column layout with a Width/Height
 | --- | --- | --- | --- | --- | --- |
 | Upper Left | ❌ | ✅ | -14.6 | -9.82 | 1.19945 |
 | Upper Center | ❔ | ✅ | 0 | -9.82 | 1.16141 |
-| Upper Right | ❌ | ✅ | 10.95 | -9.82 | 1.19945 |
+| Upper Right | ✅ | ✅ | 10.95 | -9.82 | 1.19945 |
 | Lower Left | ❌ | ❌ | -14.6 | 25.6 | 1.19945 |
 | Lower Center | ❔ | ❌ | 0 | 22 | 1.16141 |
 | Lower Right | ✅ | ❌ | 10.95 | 22 | 1.19945 |
