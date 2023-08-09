@@ -20,12 +20,11 @@ By Quantum and JustSleightly
 - Independently toggleable and animatable icons
 - Includes a Sample Prefab Tester for VRChat in order to test HUD positioning
 
-### Download the [latest version](https://github.com/JustSleightly/ToggleHUD/releases) for free!
+### Download the [latest version](https://github.com/JustSleightly/ToggleHUD/releases) for free
 
-### Commercial Usage Licenses available now at [store.sleightly.dev](https://store.sleightly.dev/)!
+### Commercial Usage Licenses available now at [store.sleightly.dev](https://store.sleightly.dev/)
 
 ---
-######
 
 # Disclaimer/Usage
 
@@ -47,8 +46,6 @@ ToggleHUD usage is intended for personal use only, and cannot be used commercial
 
 Please credit `@Quantum#0846` and `@JustSleightly#0001` and provide a link to the [product page](https://store.sleightly.dev/l/ToggleHUD) where applicable.
 
-######
-
 # Installation
 
 The below instructions are just one example method of utilizing ToggleHUD with the included sample prefab. Advanced users do not necessarily have to use this mesh and setup.
@@ -56,8 +53,6 @@ The below instructions are just one example method of utilizing ToggleHUD with t
 1. Navigate in your project files to *Assets/Shaders/Quantum/ToggleHUD/Samples/Prefabs* and drag in the ToggleHUD.prefab onto your desired avatar.
 2. Right-click the ToggleHUD object to unpack the prefab, then expand the ToggleHUD object to reveal the ProxyRoot.Head object and move ProxyRoot.Head onto your avatar's Head bone.
 3. Reset the transform of ProxyRoot.Head by right-clicking the Transform module in the inspector, and clicking Reset.
-
-######
 
 # Configuration
 
@@ -141,7 +136,7 @@ Change the directions in which the icons are displayed
 
 <blockquote>
 
-Define where the UI will render in viewspace. Some sample values can be found in the [Positioning the UI](https://github.com/JustSleightly/ToggleHUD#positioning-the-ui). 
+Define where the UI will render in viewspace. Some sample values can be found in the [Positioning the UI](https://github.com/JustSleightly/ToggleHUD#positioning-the-ui).
 
 </details>
 
@@ -177,7 +172,7 @@ Toggle the display of each of the UI icons using the respective checkboxes
 
 <blockquote>
 
-This module is only intended for use with the included ToggleHUD sample VRChat prefab tester to assist you with [Positioning the UI](https://github.com/JustSleightly/ToggleHUD#positioning-the-ui). 
+This module is only intended for use with the included ToggleHUD sample VRChat prefab tester to assist you with [Positioning the UI](https://github.com/JustSleightly/ToggleHUD#positioning-the-ui).
 
 ![ToggleHUD Anim Value Converter](https://raw.githubusercontent.com/JustSleightly/ToggleHUD/main/Documentation/Images/Anim%20Value%20Converter.png)
 
@@ -218,7 +213,7 @@ Personally, I often use ToggleHUD in a 3 Row 5 Column layout with a Width/Height
 
 **If you are implementing ToggleHUD into your VRChat Avatar**, you can use the sample prefab, animator controller, VRC expressions menu, and VRC expression parameters file to help position!
 
-It features in-game toggle-able options and radial puppets for modifying all material properties in-game, which you can then plug into the [Anim Value Converter](https://github.com/JustSleightly/ToggleHUD#material-settings) to instantly convert and set your material properties to match in Unity! 
+It features in-game toggle-able options and radial puppets for modifying all material properties in-game, which you can then plug into the [Anim Value Converter](https://github.com/JustSleightly/ToggleHUD#material-settings) to instantly convert and set your material properties to match in Unity!
 
 [<img src="https://github.com/JustSleightly/ToggleHUD/raw/main/Documentation/Gifs/ToggleHUD%20Tester.gif" height="325">](https://github.com/JustSleightly/ToggleHUD/tree/main/Sample/Textures/ "Sample UI Textures")
 
@@ -236,7 +231,7 @@ It features in-game toggle-able options and radial puppets for modifying all mat
 
 <blockquote>
 
-Assuming you have a **commercial license** for ToggleHUD, the shader files can be found at *Assets/Shaders/Quantum/ToggleHUD*. 
+Assuming you have a **commercial license** for ToggleHUD, the shader files can be found at *Assets/Shaders/Quantum/ToggleHUD*.
 
 The minimum files to export are the ToggleHUD.shader and the Editor folder, then whatever material and texture you used with it.
 
