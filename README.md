@@ -67,9 +67,7 @@ Prepare your icons in any 4 x 4 grid of your choice. A sample template can be fo
 <details>
 
   <summary> <strong> UI Color </strong> </summary>
-
-######
-
+​
 <blockquote>
 
 Select an HDR color to multiply with the UI. The alpha should not be maxed to prevent OLED burn-in
@@ -79,9 +77,7 @@ Select an HDR color to multiply with the UI. The alpha should not be maxed to pr
 <details>
 
   <summary> <strong> UI Texture </strong> </summary>
-
-######
-
+​
 <blockquote>
 
 Insert your prepared texture into this texture field. If you are using multiple icon sets in one texture, set your tiling/offset accordingly
@@ -91,9 +87,7 @@ Insert your prepared texture into this texture field. If you are using multiple 
 <details>
 
   <summary> <strong> Rows/Columns </strong> </summary>
-
-######
-
+​
 <blockquote>
 
 Define how many rows and columns of icons you want displayed. These rows and columns may not display more than 16 icons
@@ -105,9 +99,7 @@ Define how many rows and columns of icons you want displayed. These rows and col
 <details>
 
   <summary> <strong> Width/Height </strong> </summary>
-
-######
-
+​
 <blockquote>
 
 Define the 2D scale of the UI
@@ -117,9 +109,7 @@ Define the 2D scale of the UI
 <details>
 
   <summary> <strong> Flip Horizontal/Vertical/Ordering </strong> </summary>
-
-######
-
+​
 <blockquote>
 
 Change the directions in which the icons are displayed
@@ -131,9 +121,7 @@ Change the directions in which the icons are displayed
 <details>
 
   <summary> <strong> X/Y Position </strong> </summary>
-
-######
-
+​
 <blockquote>
 
 Define where the UI will render in viewspace. Some sample values can be found in the [Positioning the UI](https://github.com/JustSleightly/ToggleHUD#positioning-the-ui).
@@ -143,9 +131,7 @@ Define where the UI will render in viewspace. Some sample values can be found in
 <details>
 
   <summary> <strong> Distance </strong> </summary>
-
-######
-
+​
 <blockquote>
 
 Define the simulated distance from the view. This only appies to VR view
@@ -155,9 +141,7 @@ Define the simulated distance from the view. This only appies to VR view
 <details>
 
   <summary> <strong> Toggle UI Elements </strong> </summary>
-
-######
-
+​
 <blockquote>
 
 Toggle the display of each of the UI icons using the respective checkboxes
@@ -167,9 +151,7 @@ Toggle the display of each of the UI icons using the respective checkboxes
 <details>
 
   <summary> <strong> Anim Value Converter </strong> </summary>
-
-######
-
+​
 <blockquote>
 
 This module is only intended for use with the included ToggleHUD sample VRChat prefab tester to assist you with [Positioning the UI](https://github.com/JustSleightly/ToggleHUD#positioning-the-ui).
@@ -183,8 +165,6 @@ If you’d like values more accurate than two decimal places, you can get the ra
 ℹ️ On Windows, press `Win + R` and enter *`%userprofile%\appdata\locallow`* to navigate there more quickly
 
 </details>
-
-######
 
 # Animating the UI
 
@@ -217,18 +197,12 @@ It features in-game toggle-able options and radial puppets for modifying all mat
 
 [<img src="https://github.com/JustSleightly/ToggleHUD/raw/main/Documentation/Gifs/ToggleHUD%20Tester.gif" height="325">](https://github.com/JustSleightly/ToggleHUD/tree/main/Sample/Textures/ "Sample UI Textures")
 
-######
-
----
-
 # Frequently Asked Questions
 
 <details>
 
   <summary> <strong> How do I export ToggleHUD with my commercial package? </strong> </summary>
-
-######
-
+​
 <blockquote>
 
 Assuming you have a **commercial license** for ToggleHUD, the shader files can be found at *Assets/Shaders/Quantum/ToggleHUD*.
