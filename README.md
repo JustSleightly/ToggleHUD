@@ -30,7 +30,7 @@ By Quantum and JustSleightly
 
 Please have enough relevant experience in Unity and your VR Platform before using this, including knowledge of Unity's animation/animator controller system, and third-party systems such as VRChat's 3.0 system. Sample animation clips and VRC 3.0 resources are available for reference, but should not be used directly and are intended to be implemented in your own use cases.
 
-ToggleHUD usage is intended for personal use only, and cannot be used commercially for any paid projects or redistributable packages without a commercial license. For any additional questions regarding licensing/usage, please reach out to `JustSleightly#0001`.
+ToggleHUD usage is intended for personal use only, and cannot be used commercially for any paid projects or redistributable packages without a commercial license. For any additional questions regarding licensing/usage, please reach out to `@justsleightly` on discord.
 
 | Usage  | Personal | Commercial |
 | ------------- | ------------- | ------------- |
@@ -44,7 +44,7 @@ ToggleHUD usage is intended for personal use only, and cannot be used commercial
 | Commissioned Uploads | :white_square_button: | :white_check_mark: |
 | Commissioned Packages | :white_square_button: | :white_check_mark: |
 
-Please credit `@Quantum#0846` and `@JustSleightly#0001` and provide a link to the [product page](https://store.sleightly.dev/l/ToggleHUD) where applicable.
+Please credit `@quantumlot` and `@justsleightly` on discord and provide a link to the [product page](https://store.sleightly.dev/l/ToggleHUD) where applicable.
 
 # Installation
 
@@ -217,6 +217,6 @@ If you used the sample prefab, be sure to also include the sample mesh/material 
 
 ## Contributions
 
-Shader and Functional Design - `Quantum#0846`
+Shader and Functional Design - `@quantumlot` on discord
 
-ShaderGUI Editor and Project Design - `JustSleightly#0001`
+ShaderGUI Editor and Project Design - `@justsleightly` on discord
