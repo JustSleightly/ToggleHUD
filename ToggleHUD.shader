@@ -104,10 +104,10 @@
             }
     
             fixed4 frag(v2f i) : SV_Target {
-                uint composite = _Toggle_0 | _Toggle_1 << 1 | _Toggle_2 << 2 | _Toggle_3 << 3
-                              | _Toggle_4 << 4 | _Toggle_5 << 5 | _Toggle_6 << 6 | _Toggle_7 << 7
-                              | _Toggle_8 << 8 | _Toggle_9 << 9 | _Toggle_10 << 10 | _Toggle_11 << 11
-                              | _Toggle_12 << 12 | _Toggle_13 << 13 | _Toggle_14 << 14 | _Toggle_15 << 15;
+                uint composite = _Toggle_0 | _Toggle_1 << 1 | _Toggle_2 << 2 | _Toggle_3 << 3 |
+                                 _Toggle_4 << 4 | _Toggle_5 << 5 | _Toggle_6 << 6 | _Toggle_7 << 7 |
+                                 _Toggle_8 << 8 | _Toggle_9 << 9 | _Toggle_10 << 10 | _Toggle_11 << 11 |
+                                 _Toggle_12 << 12 | _Toggle_13 << 13 | _Toggle_14 << 14 | _Toggle_15 << 15;
                 uint2 position = uint2(i.uv.x * _Columns, i.uv.y * _Rows);
                 #ifdef FLIP_HORIZONTAL
                     position.x = _Columns - 1 - position.x;
